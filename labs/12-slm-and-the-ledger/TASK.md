@@ -38,20 +38,33 @@ actually rent.
 **3. Decide the role.** Should this model *decide* or *explain*? You have evidence from
 phase 10 about what happens when a language model decides. Write the argument.
 
-**4. The hypothesis, before you spend anything.** In `experiments/11-finetune-vs-tfidf.md`:
+**4. The hypothesis, before you spend anything.** In `experiments/12-finetune-vs-tfidf.md`:
 
 - the claim you are testing;
 - the baseline you will compare against — the cheapest thing that could possibly work;
 - the number that would make you keep going;
 - the number that would make you stop.
 
-**4b. Price the training data.** There is no labelled explanation corpus, so you build one
-by having a strong model label cases. Estimate the cost per call **on a real rendered
-prompt**, not a short synthetic one, then multiply. Record the estimate in
-`decisions/12-memory-ledger.md` before you spend, and record the actual afterwards.
+**4b. Buy the training data — distillation.** There is no labelled explanation corpus. You
+make one by having a strong model label your cases, and that model's labels become your
+training data. This is a purchase, so it gets priced before it is made.
 
-Then look at the label distribution your teacher produced. Whatever it is, that is your
-student's majority baseline — not 50%.
+In `experiments/12-distillation-cost.md`, **before spending anything**:
+
+- render **one real prompt** — the actual string, with real evidence in it — and count its
+  tokens. Do not estimate from a short synthetic example; real prompts are longer and
+  models that think adaptively emit far more output than you expect.
+- price per call from a rate you can cite. Never hardcode a rate you have not verified;
+  if you cannot verify it, say which rate you are standing in and that it may be wrong.
+- multiply by your corpus size. Write the budget and the number that would make you stop.
+
+Then run it and write `artifacts/results/distill-corpus.json` with: examples labelled,
+examples declined, parse failures, actual total cost, cost per call, and **the label
+distribution**.
+
+That last one is not bookkeeping. Whatever your teacher's class balance is, **that is your
+student's majority baseline** — not 50%. Work it out and write it down now, because in step
+6 you will need it to know whether the fine-tune did anything at all.
 
 **5. Run the baseline first.** TF-IDF plus a linear classifier, on the same split. Costs
 nothing, takes seconds. Get that number before the fine-tune exists.

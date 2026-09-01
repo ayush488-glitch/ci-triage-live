@@ -223,10 +223,12 @@ slug = "slm-and-the-ledger"
 title = "Does the fine-tune beat the boring baseline?"
 question = "Before you rent a GPU: what result would make you not rent it?"
 acts = "13"
-minutes = 75
+minutes = 95
 level = 5
 required = [
   "design/12-slm-and-the-ledger.md",
+  "experiments/12-distillation-cost.md",
+  "artifacts/results/distill-corpus.json",
   "experiments/12-finetune-vs-tfidf.md",
   "artifacts/results/slm.json",
   "decisions/12-memory-ledger.md",

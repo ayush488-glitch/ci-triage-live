@@ -38,7 +38,7 @@ There is a second reason. Training a decider on this data teaches the model the 
 distribution, and a model that has learned "almost nothing is flaky" produces exactly the
 degenerate behaviour phase 02 warned about.
 
-## Building the training data costs money before the GPU does
+## Distillation — the purchase before the purchase
 
 There is no labelled explanation corpus. You have to make one, by having a strong model
 label cases — distillation. The real run:
@@ -48,9 +48,18 @@ label cases — distillation. The real run:
 zero parse failures
 ```
 
-The cost came in ~2.5x over the estimate, because the model runs adaptive thinking by
-default and real prompts are longer than the synthetic one used to estimate. **Price a
-distillation run on real prompts, not a toy one.**
+The cost came in **~2.5x over the estimate**. Two reasons, both worth internalising: the
+teacher runs adaptive thinking by default, so output tokens ran 300+ per call rather than
+the ~193 assumed; and the estimate had been taken from a short synthetic case, while real
+prompts carry real stack traces and real per-observer evidence. **Price on a rendered
+prompt, never a toy one.**
+
+There is a second cost lesson here. The per-token rate for the teacher could not be
+verified — the public pricing page did not list the model, and the hosted rate is known to
+differ from the first-party rate by roughly 2x for the same model era. The rule that was
+followed: **never hardcode a rate you have not verified.** A stand-in rate was used, and the
+fact that it was a stand-in was written down. A wrong hardcoded price silently corrupts
+every cost number in the system while looking perfectly correct.
 
 And the finding that decides everything downstream:
 
@@ -58,8 +67,11 @@ And the finding that decides everything downstream:
 teacher labels: 1,376 FLAKY / 60 NOT_FLAKY  (95.8%)
 ```
 
-The teacher is massively skewed. So the majority baseline for the student is **~95.8%, not
-50%**. A student scoring 94% here is not "pretty good" — it is worse than a constant.
+The teacher is massively skewed — and it is skewed because of a design detail, not by
+accident: this corpus's retrieval observer was still using an older label mapping, so the
+teacher was partly answering a different question than the one the student would be asked.
+
+Either way, the majority baseline for the student is **~95.8%, not 50%**. A student scoring 94% here is not "pretty good" — it is worse than a constant.
 Phase 02, arriving again, four phases later, in a place nobody expects it.
 
 ## The result
