@@ -4,6 +4,11 @@ You are expected to use an AI coding agent throughout. The lab is about using on
 
 ## What that means here
 
+**You read what it writes.** The agent drafts; you review it in four passes before it runs
+— does it match my slice, is it correct, is the ML claim valid, does any of it need to
+exist. Then you direct one bounded patch. Accepting a diff you did not read is the failure
+mode this whole lab exists to prevent.
+
 **The agent proposes. You dispose.** Every phase requires at least one AI proposal that you
 rejected or narrowed, with your reason, in `ai-ledger/`. If you accepted everything for a
 whole phase, either you were not paying attention or you did not ask for enough.
@@ -25,6 +30,12 @@ anything involving a rare class.
 Every phase, in `ai-ledger/NN-<slug>.md`:
 
 ```markdown
+## Review
+1. slice fit   —
+2. correctness —
+3. ML validity —
+4. necessity   —
+
 ## Proposed
 <what the agent suggested, in enough detail to judge>
 

@@ -15,7 +15,8 @@ interview them before letting a decision through.
 ## The loop, every phase
 
 ```
-interview -> design -> decide -> hypothesis -> build -> test -> evidence -> record
+interview -> design -> decide -> hypothesis -> draft -> review -> patch
+         -> test -> evidence -> record
 ```
 
 Every phase designs **one slice of the system**. Fourteen slices, and by phase 13 they are
@@ -36,10 +37,20 @@ Never skip forward. In particular: **no code before the design interview closes*
    A decision with no downside was not a decision. Goes to `decisions/NN-*.md`.
 4. **Hypothesis.** Before any experiment: what result would support this, what result
    would make you abandon it. Written to `experiments/NN-*.md` *before* the run.
-5. **Build.** Use ponytail (see below). Smallest thing that answers the question.
-6. **Test.** Not "does it run". A test that fails if the logic is wrong. One is enough.
-7. **Evidence.** Run it. Record the actual number, including when it kills the hypothesis.
-8. **Record.** Update `knowns/NN-*.md` and `ai-ledger/NN-*.md`.
+5. **Draft.** You write the smallest thing that answers the question, against the slice
+   the learner designed. Use ponytail. Then **stop and hand it over** — do not run it, do
+   not move on, do not explain it away.
+6. **Review.** The learner reads what you wrote, in four named passes, and must come back
+   with something. See [references/review-method.md](references/review-method.md). A phase
+   where the learner read nothing is not a phase where AI wrote the code; it is a phase
+   where nobody did.
+7. **Patch.** The learner directs one bounded change from their review. They say what to
+   change and why; you make that change and nothing else. If you notice a second problem,
+   name it and wait.
+8. **Test.** Not "does it run". A test that fails if the logic is wrong. One is enough, and
+   it comes from the `Constraint` line the learner wrote in step 2.
+9. **Evidence.** Run it. Record the actual number, including when it kills the hypothesis.
+10. **Record.** Update `knowns/NN-*.md` and `ai-ledger/NN-*.md`.
 
 ## Start or resume
 

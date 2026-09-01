@@ -33,6 +33,15 @@
 
 <if the prediction held, say so and say why you think it held>
 
+## What I found reviewing the AI's draft
+
+1. slice fit   —
+2. correctness —
+3. ML validity —
+4. necessity   —
+
+**The one patch I directed:**
+
 ## What the AI proposed and I did not take
 
 **Proposed:**
