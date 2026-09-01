@@ -62,7 +62,7 @@ Commit at the end of every phase. `progress.html` is gitignored — it regenerat
 
 A triage system with four independent observers — rules, a tabular model, a sequence model,
 and retrieval — a fusion layer, an arbiter, and an evidence record that makes every verdict
-traceable. Roughly 13 hours of work across 13 phases, then a 90-minute challenge.
+traceable. Roughly 13 hours of work across 14 phases, then a 90-minute challenge.
 
 More importantly: a written record of every decision you made, every AI proposal you
 rejected, every hypothesis that turned out wrong, and everything you still do not know.
@@ -76,7 +76,7 @@ interview -> design -> decide -> hypothesis -> build -> test -> evidence -> reco
 
 Each phase opens with an interview and then designs **one slice of the system** — what it
 is responsible for, what it is allowed to read, what it emits, when it refuses to answer,
-and the one constraint that must never break. Thirteen slices; by the end they are the
+and the one constraint that must never break. Fourteen slices; by the end they are the
 whole architecture.
 
 You design the slice. The agent implements behind it. That division is not a style

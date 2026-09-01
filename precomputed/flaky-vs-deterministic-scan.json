@@ -1,0 +1,187 @@
+{
+  "per_project": {
+    "Alluxio-alluxio": {
+      "raw": {
+        "FLAKY": 15974,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 243,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "apache-commons-exec": {
+      "raw": {
+        "FLAKY": 0,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 0,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "apache-httpcore": {
+      "raw": {
+        "FLAKY": 270,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 18,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "doanduyhai-Achilles": {
+      "raw": {
+        "FLAKY": 161,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 5,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "elasticjob-elastic-job-lite": {
+      "raw": {
+        "FLAKY": 6,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 3,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "google-jimfs": {
+      "raw": {
+        "FLAKY": 0,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 0,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "hector-client-hector": {
+      "raw": {
+        "FLAKY": 5444,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 33,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "jknack-handlebars.java": {
+      "raw": {
+        "FLAKY": 366,
+        "DETERMINISTIC": 126448
+      },
+      "deduplicated": {
+        "FLAKY": 1,
+        "DETERMINISTIC": 16
+      },
+      "has_both_classes": true
+    },
+    "kevinsawicki-http-request": {
+      "raw": {
+        "FLAKY": 2923,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 15,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "ninjaframework-ninja": {
+      "raw": {
+        "FLAKY": 357,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 1,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "orbit-orbit": {
+      "raw": {
+        "FLAKY": 2322,
+        "DETERMINISTIC": 47430
+      },
+      "deduplicated": {
+        "FLAKY": 7,
+        "DETERMINISTIC": 3
+      },
+      "has_both_classes": true
+    },
+    "qos-ch-logback": {
+      "raw": {
+        "FLAKY": 3479,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 22,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "square-okhttp": {
+      "raw": {
+        "FLAKY": 22442,
+        "DETERMINISTIC": 802944
+      },
+      "deduplicated": {
+        "FLAKY": 116,
+        "DETERMINISTIC": 118
+      },
+      "has_both_classes": true
+    },
+    "tootallnate-java-websocket": {
+      "raw": {
+        "FLAKY": 1697,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 43,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "undertow-io-undertow": {
+      "raw": {
+        "FLAKY": 88,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 9,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    },
+    "zxing-zxing": {
+      "raw": {
+        "FLAKY": 223,
+        "DETERMINISTIC": 0
+      },
+      "deduplicated": {
+        "FLAKY": 2,
+        "DETERMINISTIC": 0
+      },
+      "has_both_classes": false
+    }
+  },
+  "total_projects": 16,
+  "projects_with_both_classes": [
+    "jknack-handlebars.java",
+    "orbit-orbit",
+    "square-okhttp"
+  ],
+  "projects_with_both_classes_count": 3
+}

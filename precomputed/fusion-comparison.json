@@ -1,0 +1,39 @@
+{
+  "fuse_best_single": {
+    "accuracy": 0.9054054054054054,
+    "ece": 0.09054739126994651,
+    "brier": 0.08521709773690742,
+    "beats_majority": true
+  },
+  "fuse_weighted": {
+    "accuracy": 0.9054054054054054,
+    "ece": 0.10152388621810554,
+    "brier": 0.06334731110701554,
+    "beats_majority": true
+  },
+  "fuse_stacking": {
+    "accuracy": 0.9054054054054054,
+    "ece": 0.1426235915800606,
+    "brier": 0.06363418923159597,
+    "beats_majority": true
+  },
+  "fuse_llm_naive": {
+    "accuracy": 0.43243243243243246,
+    "ece": 0.4582432432432433,
+    "brier": 0.40245000000000003,
+    "beats_majority": false
+  },
+  "fuse_llm_calibrated": {
+    "accuracy": 0.7837837837837838,
+    "ece": 0.10579150579150576,
+    "brier": 0.1555268023125166,
+    "beats_majority": true
+  },
+  "_meta": {
+    "n_train": 55,
+    "n_calibration": 55,
+    "n_test": 74,
+    "majority_baseline": 0.5675675675675675,
+    "total_llm_cost_usd": 0.423698
+  }
+}

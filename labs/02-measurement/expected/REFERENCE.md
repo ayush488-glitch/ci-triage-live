@@ -44,6 +44,15 @@ the binning, not the model.
 Equal-frequency bins put the same count in each bin and expose the gaps in the sparse upper
 range where the decisions actually happen.
 
+On a 3.16%-style clustered distribution the two disagree by roughly **4x**:
+
+```
+equal-width   ECE = 0.0287
+equal-mass    ECE = 0.1145
+```
+
+Same predictions. Same labels. One of those numbers would have gone in a slide.
+
 This is not hypothetical. It is a bug that shipped in the original build of this system and
 had to be found and fixed.
 

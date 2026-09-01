@@ -1,0 +1,60 @@
+{
+  "per_project": [
+    {
+      "held_out_project": "jknack-handlebars.java",
+      "indexed_counts": {
+        "FLAKY": 123,
+        "NOT_FLAKY": 121
+      },
+      "held_out_size": 17,
+      "held_out_class_counts": {
+        "FLAKY": 1,
+        "NOT_FLAKY": 16
+      },
+      "k": 5,
+      "precision_at_k": 0.058823529411764705,
+      "majority_baseline": 0.9411764705882353,
+      "beats_baseline": false,
+      "note": "precision_at_k (0.0588) does not exceed the majority-class baseline (0.9412): retrieval shows no learned signal here"
+    },
+    {
+      "held_out_project": "orbit-orbit",
+      "indexed_counts": {
+        "FLAKY": 117,
+        "NOT_FLAKY": 134
+      },
+      "held_out_size": 10,
+      "held_out_class_counts": {
+        "FLAKY": 7,
+        "NOT_FLAKY": 3
+      },
+      "k": 5,
+      "precision_at_k": 0.7,
+      "majority_baseline": 0.7,
+      "beats_baseline": false,
+      "note": "precision_at_k (0.7000) does not exceed the majority-class baseline (0.7000): retrieval shows no learned signal here"
+    },
+    {
+      "held_out_project": "square-okhttp",
+      "indexed_counts": {
+        "FLAKY": 8,
+        "NOT_FLAKY": 19
+      },
+      "held_out_size": 234,
+      "held_out_class_counts": {
+        "FLAKY": 116,
+        "NOT_FLAKY": 118
+      },
+      "k": 5,
+      "precision_at_k": 0.6641025641025645,
+      "majority_baseline": 0.5042735042735043,
+      "beats_baseline": true
+    }
+  ],
+  "aggregate": {
+    "rotations_scored": 3,
+    "rotations_total": 3,
+    "mean_precision_at_k": 0.4743086978381097,
+    "mean_majority_baseline": 0.7151499916205798
+  }
+}

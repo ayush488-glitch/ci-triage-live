@@ -1,6 +1,6 @@
 # Design method
 
-Every phase designs one slice of the system. Thirteen slices, and by phase 12 they are the
+Every phase designs one slice of the system. Fourteen slices, and by phase 13 they are the
 whole architecture. The student designs the slice; the agent implements behind it.
 
 ## Why the design comes first, every time

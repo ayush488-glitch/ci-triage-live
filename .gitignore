@@ -3,6 +3,8 @@ __pycache__/
 *.pyc
 .pytest_cache/
 data/raw/
+data/cache/
+data/distill/
 progress.html
 .DS_Store
 .ci-lab/progress.json

@@ -32,7 +32,7 @@ decision. Nothing is allowed to be built before the four actions and the cost ta
 
 ---
 
-## 2. AI pushback — phases 01–12, gated
+## 2. AI pushback — phases 01–13, gated
 
 The learner must reject or narrow at least one proposal of yours per phase, and write why
 in `ai-ledger/NN-*.md`.
@@ -66,7 +66,7 @@ Every code phase also gets a `Ponytail pass:` line — what the simplification r
 
 ---
 
-## 3. Whiteboard defence — phases 05–12, gated
+## 3. Whiteboard defence — phases 06–13, gated
 
 After a result exists, pick one number and attack it. Three to five follow-ups, escalating.
 The learner types the defence. It goes in `.ci-lab/interviews/NN.md`.
@@ -91,7 +91,7 @@ were wrong here.
 
 ---
 
-## 4. Graded interview — phases 06, 09, 12, gated
+## 4. Graded interview — phases 07, 10, 13, gated
 
 A closing round of 5 questions covering the whole arc so far, not just this phase. Score
 against `rubric-ladder.md` and write the verdict to `.ci-lab/interviews/NN.md`:

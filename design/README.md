@@ -2,7 +2,7 @@
 
 One slice per phase: `NN-<slug>.md`, written **before** any code in that phase.
 
-Thirteen slices. By phase 12 they are the whole system, and `docs/architecture.md` is
+Fourteen slices. By phase 12 they are the whole system, and `docs/architecture.md` is
 assembled from them rather than written separately.
 
 ## Template
@@ -46,11 +46,12 @@ component should be allowed to read, stop and design it.
 | 02 | evaluation component — separate from every model, on purpose |
 | 03 | ground-truth source — provenance and what refreshes it |
 | 04 | ingestion — source to feature matrix, and where the leak guard sits |
-| 05 | experiment harness — how a run is specified and reproduced |
-| 06 | observer 1 — tabular |
-| 07 | observer 2 — sequence |
-| 08 | observer 3 — retrieval, and its index as a stateful dependency |
-| 09 | integration contract — the evidence record and the independence rules |
-| 10 | decision layer — fusion, escalation, arbiter |
-| 11 | explanation layer — what it may say and what it may never do |
-| 12 | operations layer — invariants, monitoring, append-only evidence |
+| 05 | trust gate — which runs may contribute evidence at all |
+| 06 | experiment harness — how a run is specified and reproduced |
+| 07 | observer 1 — tabular |
+| 08 | observer 2 — sequence |
+| 09 | observer 3 — retrieval, and its index as a stateful dependency |
+| 10 | integration contract — the evidence record and the independence rules |
+| 11 | decision layer — fusion, escalation, arbiter |
+| 12 | explanation layer — what it may say and what it may never do |
+| 13 | operations layer — invariants, monitoring, append-only evidence |

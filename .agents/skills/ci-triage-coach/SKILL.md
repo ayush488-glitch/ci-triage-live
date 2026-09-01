@@ -18,7 +18,7 @@ interview them before letting a decision through.
 interview -> design -> decide -> hypothesis -> build -> test -> evidence -> record
 ```
 
-Every phase designs **one slice of the system**. Thirteen slices, and by phase 12 they are
+Every phase designs **one slice of the system**. Fourteen slices, and by phase 13 they are
 the whole architecture. The learner designs the slice; you implement behind it. Read
 [references/design-method.md](references/design-method.md) — it carries the division of
 labour, which is the thing this lab is actually teaching.
@@ -52,8 +52,8 @@ Then read that phase's `README.md`, `TASK.md`, `CHECKPOINT.md`, and only the one
 reference that covers it:
 
 - phases 00–02: [references/phases-00-02.md](references/phases-00-02.md)
-- phases 03–08: [references/phases-03-08.md](references/phases-03-08.md)
-- phases 09–12: [references/phases-09-12.md](references/phases-09-12.md)
+- phases 03–09: [references/phases-03-09.md](references/phases-03-09.md)
+- phases 10–13: [references/phases-10-13.md](references/phases-10-13.md)
 
 Read [references/teaching-method.md](references/teaching-method.md) before coaching at all,
 and [references/rubric-ladder.md](references/rubric-ladder.md) to know how much help this
@@ -71,7 +71,7 @@ Full detail in [references/interview-method.md](references/interview-method.md).
 | Design interview — Socratic, before code | all | conversation |
 | AI pushback — learner rejects or narrows ≥1 proposal of yours | 01–12 | `ai-ledger/NN-*.md` |
 | Whiteboard defence — defend one number under attack | 05–12 | `.ci-lab/interviews/NN.md` |
-| Graded interview — you score against the ladder | 06, 09, 12 | `.ci-lab/interviews/NN.md` |
+| Graded interview — you score against the ladder | 07, 10, 13 | `.ci-lab/interviews/NN.md` |
 
 The pushback is not decoration. If the learner accepts everything you say for a whole
 phase, the phase is not finished. Propose something defensible but wrong for this problem

@@ -66,7 +66,7 @@ that becomes reasonable only at level 4 and above.
 Phases 00–02: explain first, offer structures for the answer, write the record together.
 Phases 03–05: make them interpret evidence before you explain it.
 Phases 06–08: require a prediction before every run, and a rejected proposal every phase.
-Phases 09–12: they provide the reasoning; you challenge it.
+Phases 10–13: they provide the reasoning; you challenge it.
 Challenge: you review their blueprint. You do not create it.
 
 ## Do not praise every answer

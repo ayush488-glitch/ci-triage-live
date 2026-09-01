@@ -3,7 +3,7 @@ version = 1
 
 # Everything up to and including this phase has been taught in class.
 # Move this line after each session. Nothing else needs to change.
-taught_through = "10"
+taught_through = "11"
 
 [[phases]]
 id = "00"
@@ -88,6 +88,24 @@ required = [
 
 [[phases]]
 id = "05"
+slug = "infra-gate"
+title = "Which runs may contribute evidence at all?"
+question = "A build produced 116 distinct failing tests. How many of those failures were real?"
+acts = "6"
+minutes = 60
+level = 4
+required = [
+  "design/05-infra-gate.md",
+  "ci_triage/infra.py",
+  "tests/test_infra.py",
+  "artifacts/results/infra.json",
+  "decisions/05-infra-gate.md",
+  "ai-ledger/05-infra-gate.md",
+  "knowns/05-infra-gate.md",
+]
+
+[[phases]]
+id = "06"
 slug = "splits-and-baseline"
 title = "The split is the experiment"
 question = "Does your split match the question you will be asked in production?"
@@ -95,18 +113,18 @@ acts = "4, 6"
 minutes = 60
 level = 4
 required = [
-  "design/05-splits-and-baseline.md",
+  "design/06-splits-and-baseline.md",
   "ci_triage/splits.py",
   "tests/test_splits.py",
-  "experiments/05-split-comparison.md",
+  "experiments/06-split-comparison.md",
   "artifacts/results/baseline.json",
-  "decisions/05-split-choice.md",
-  "ai-ledger/05-splits-and-baseline.md",
-  "knowns/05-splits-and-baseline.md",
+  "decisions/06-split-choice.md",
+  "ai-ledger/06-splits-and-baseline.md",
+  "knowns/06-splits-and-baseline.md",
 ]
 
 [[phases]]
-id = "06"
+id = "07"
 slug = "tabular-and-the-pivot"
 title = "The first observer, and what to do when it fails"
 question = "What does calibration cost you, and what do you do when the model does not generalise?"
@@ -114,19 +132,19 @@ acts = "7, 8"
 minutes = 75
 level = 4
 required = [
-  "design/06-tabular-and-the-pivot.md",
+  "design/07-tabular-and-the-pivot.md",
   "ci_triage/tabular.py",
   "tests/test_tabular.py",
-  "experiments/06-calibration-tradeoff.md",
+  "experiments/07-calibration-tradeoff.md",
   "artifacts/results/tabular.json",
-  "decisions/06-the-pivot.md",
-  "ai-ledger/06-tabular-and-the-pivot.md",
-  "knowns/06-tabular-and-the-pivot.md",
-  ".ci-lab/interviews/06.md",
+  "decisions/07-the-pivot.md",
+  "ai-ledger/07-tabular-and-the-pivot.md",
+  "knowns/07-tabular-and-the-pivot.md",
+  ".ci-lab/interviews/07.md",
 ]
 
 [[phases]]
-id = "07"
+id = "08"
 slug = "sequence-observer"
 title = "Did the model learn anything the heuristic did not?"
 question = "Your sequence model beats the tabular one. Prove it earned that."
@@ -134,17 +152,17 @@ acts = "8"
 minutes = 60
 level = 4
 required = [
-  "design/07-sequence-observer.md",
+  "design/08-sequence-observer.md",
   "ci_triage/sequences.py",
   "tests/test_sequences.py",
-  "experiments/07-heuristic-control.md",
+  "experiments/08-heuristic-control.md",
   "artifacts/results/sequence.json",
-  "ai-ledger/07-sequence-observer.md",
-  "knowns/07-sequence-observer.md",
+  "ai-ledger/08-sequence-observer.md",
+  "knowns/08-sequence-observer.md",
 ]
 
 [[phases]]
-id = "08"
+id = "09"
 slug = "retrieval-observer"
 title = "Why the cheapest method won"
 question = "Why does looking up similar past failures beat learning a model of them?"
@@ -152,17 +170,17 @@ acts = "8"
 minutes = 60
 level = 5
 required = [
-  "design/08-retrieval-observer.md",
+  "design/09-retrieval-observer.md",
   "ci_triage/retrieval.py",
   "tests/test_retrieval.py",
   "artifacts/results/retrieval.json",
-  "decisions/08-index-contents.md",
-  "ai-ledger/08-retrieval-observer.md",
-  "knowns/08-retrieval-observer.md",
+  "decisions/09-index-contents.md",
+  "ai-ledger/09-retrieval-observer.md",
+  "knowns/09-retrieval-observer.md",
 ]
 
 [[phases]]
-id = "09"
+id = "10"
 slug = "architecture-independence"
 title = "Why no observer may read another"
 question = "Three components agree. Is that evidence, or is it one observation counted three times?"
@@ -170,18 +188,18 @@ acts = "9, 11, 12"
 minutes = 60
 level = 5
 required = [
-  "design/09-architecture-independence.md",
+  "design/10-architecture-independence.md",
   "ci_triage/contracts.py",
   "tests/test_contracts.py",
-  "decisions/09-independence.md",
+  "decisions/10-independence.md",
   "docs/architecture.md",
-  "ai-ledger/09-architecture-independence.md",
-  "knowns/09-architecture-independence.md",
-  ".ci-lab/interviews/09.md",
+  "ai-ledger/10-architecture-independence.md",
+  "knowns/10-architecture-independence.md",
+  ".ci-lab/interviews/10.md",
 ]
 
 [[phases]]
-id = "10"
+id = "11"
 slug = "fusion-and-arbiter"
 title = "What happens when the LLM arbitrates"
 question = "The observers disagree. Who decides, and what evidence do they get?"
@@ -189,18 +207,18 @@ acts = "10"
 minutes = 75
 level = 5
 required = [
-  "design/10-fusion-and-arbiter.md",
+  "design/11-fusion-and-arbiter.md",
   "ci_triage/fusion.py",
   "tests/test_fusion.py",
-  "experiments/10-fusion-comparison.md",
+  "experiments/11-fusion-comparison.md",
   "artifacts/results/fusion.json",
-  "decisions/10-arbiter-rules.md",
-  "ai-ledger/10-fusion-and-arbiter.md",
-  "knowns/10-fusion-and-arbiter.md",
+  "decisions/11-arbiter-rules.md",
+  "ai-ledger/11-fusion-and-arbiter.md",
+  "knowns/11-fusion-and-arbiter.md",
 ]
 
 [[phases]]
-id = "11"
+id = "12"
 slug = "slm-and-the-ledger"
 title = "Does the fine-tune beat the boring baseline?"
 question = "Before you rent a GPU: what result would make you not rent it?"
@@ -208,16 +226,16 @@ acts = "13"
 minutes = 75
 level = 5
 required = [
-  "design/11-slm-and-the-ledger.md",
-  "experiments/11-finetune-vs-tfidf.md",
+  "design/12-slm-and-the-ledger.md",
+  "experiments/12-finetune-vs-tfidf.md",
   "artifacts/results/slm.json",
-  "decisions/11-memory-ledger.md",
-  "ai-ledger/11-slm-and-the-ledger.md",
-  "knowns/11-slm-and-the-ledger.md",
+  "decisions/12-memory-ledger.md",
+  "ai-ledger/12-slm-and-the-ledger.md",
+  "knowns/12-slm-and-the-ledger.md",
 ]
 
 [[phases]]
-id = "12"
+id = "13"
 slug = "self-deception-and-handoff"
 title = "How could this system lie to us?"
 question = "Write down how you will be fooled, before you are fooled."
@@ -225,11 +243,11 @@ acts = "14, 15, 16"
 minutes = 60
 level = 6
 required = [
-  "design/12-self-deception-and-handoff.md",
+  "design/13-self-deception-and-handoff.md",
   "FAILURES.md",
   "docs/prior-work.md",
   "tests/test_invariants.py",
   "KNOWNS.md",
-  "ai-ledger/12-self-deception-and-handoff.md",
-  ".ci-lab/interviews/12.md",
+  "ai-ledger/13-self-deception-and-handoff.md",
+  ".ci-lab/interviews/13.md",
 ]
