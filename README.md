@@ -13,24 +13,50 @@ There is no starter code. `ci_triage/` does not exist yet. You write it.
 
 ## Start
 
-You need [uv](https://docs.astral.sh/uv/) and a coding agent (Claude Code, or any agent
-that reads `.agents/skills/`). Then paste this into the agent, in this folder:
-
-```text
-Read .agents/skills/ci-triage-coach/SKILL.md and follow it. This is a guided lab
-and I am the learner.
-
-Set me up first: check I have uv, install the ponytail plugin if it is missing
-(/plugin marketplace add DietrichGebert/ponytail then /plugin install
-ponytail@ponytail), run `uv run lab.py doctor`, then `uv run lab.py next`, and
-open progress.html so I can see where I am.
-
-Then start coaching me from whatever phase that is. I may know nothing about
-machine learning. Explain before you question me, one question at a time, and
-do not write my design decisions for me.
+```bash
+git clone https://github.com/ayush488-glitch/ci-triage-live.git
+cd ci-triage-live
 ```
 
-That is the whole setup. The coach takes it from there.
+You need [uv](https://docs.astral.sh/uv/) and a coding agent (Claude Code, or any agent that
+reads `.agents/skills/`). Open the agent in this folder and paste this, unchanged:
+
+```text
+Read .agents/skills/ci-triage-coach/SKILL.md and follow it. I am the learner.
+Do this setup before any coaching, and tell me the result of each step:
+
+1. Check `uv --version` works. If not, stop and tell me how to install it.
+2. Put me on my own branch so I do not collide with other students:
+   `git checkout -b lab/$(git config user.name | tr ' A-Z' '-a-z')`
+   Tell me the branch name. All my work goes here; I never push to main.
+3. Check whether the ponytail skill is available. If it is not, tell me to run
+   these two lines myself and wait for me:
+     /plugin marketplace add DietrichGebert/ponytail
+     /plugin install ponytail@ponytail
+4. Run `uv run lab.py doctor`. It must say "harness ok".
+5. Run `uv run lab.py next` and open progress.html so I can see where I am.
+
+Then start coaching me from whatever phase that is.
+
+I may know nothing about machine learning. Explain before you question me, ask
+one question at a time, and wait for my answer. Do not write my design
+decisions, and do not tell me a result before I have run it.
+```
+
+That is the whole setup. No install step and no `pyproject.toml` — `lab.py` is stdlib-only.
+The coach takes it from there.
+
+## Saving your work
+
+You are a collaborator on a shared repository, so everything happens on your own branch.
+
+```bash
+git add -A && git commit -m "phase 05"
+git push -u origin HEAD          # first push only; then just `git push`
+```
+
+Commit at the end of every phase. `progress.html` is gitignored — it regenerates from
+`lab.py` on any machine, so there is nothing to lose.
 
 ## What you will have at the end
 
