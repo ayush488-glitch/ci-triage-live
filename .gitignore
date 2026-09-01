@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/raw/
+progress.html
+.DS_Store
+.ci-lab/progress.json
