@@ -1,5 +1,24 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/10-fusion-and-arbiter.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **the decision layer**.
+
+Fusion, escalation, and the arbiter. What triggers each, in what order.
+
+The hard question: **what is the arbiter forbidden from seeing, and what is it forbidden
+from doing?** Both halves. An arbiter with no forbidden actions can silently overrule the
+one component whose numbers you trust.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Predict, in writing.** In `experiments/10-fusion-comparison.md`, before you build: rank
 your five strategies by expected accuracy and by expected calibration. Say where you expect
 the LLM arbiter to land on each.

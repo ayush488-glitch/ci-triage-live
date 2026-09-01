@@ -1,5 +1,23 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/12-self-deception-and-handoff.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **the operations layer**.
+
+The last slice: invariants, monitoring, alarms, and the evidence store as append-only.
+
+The hard question: **which of your twelve earlier slices would you find out had broken, and
+which would fail silently?** Every silent one needs an instrument. That list is the phase.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. The failure register.** In `FAILURES.md`, four families. For each: at least two concrete
 failures, how each would look from the outside, and the instrument that catches it.
 

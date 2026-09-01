@@ -1,5 +1,24 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/05-splits-and-baseline.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **the experiment harness**.
+
+How a run is specified and reproduced. What identifies a run, what a result is as an
+object, and what has to be recorded for someone else to get the same number.
+
+The hard question: **what stops a future you from selecting on the test set?** Design the
+thing that makes it awkward, not the paragraph that asks you not to.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Predict, in writing, first.**
 
 Open `experiments/05-split-comparison.md` and write, before running anything:

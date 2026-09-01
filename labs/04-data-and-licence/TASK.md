@@ -1,5 +1,25 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/04-data-and-licence.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **the ingestion layer**.
+
+Source files to feature matrix. Every transformation named, and the point where the leak
+guard sits.
+
+The hard question: **where does the leak guard live so that it cannot be bypassed?** If it
+is a step somebody remembers to call, it will be skipped. If it is inside the only function
+that returns features, it cannot be.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Licence first.** Find at least two candidate datasets for flaky-test research. For each:
 who published it, what licence, and what it obliges you to do. Write it in
 `decisions/04-dataset-choice.md` before you download anything. One of the obvious candidates

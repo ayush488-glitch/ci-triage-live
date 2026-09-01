@@ -1,5 +1,26 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/09-architecture-independence.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **the integration contract**.
+
+This is the slice where the others join. The evidence record every observer writes, and the
+rules that make combining them meaningful.
+
+The hard question: **compute the overlap.** You wrote `Reads` for observers 1, 2 and 3.
+Intersect those three lists. Whatever is in more than one is the reason agreement between
+them is not independent evidence — and it is now a fact you can check rather than a
+principle you hope for.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Separate the levels.** In `docs/architecture.md`, state the case-level question and the
 run-level question, who consumes each, and what goes wrong if you answer one with the other.
 

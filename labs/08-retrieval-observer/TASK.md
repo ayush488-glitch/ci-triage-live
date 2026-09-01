@@ -1,5 +1,24 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/08-retrieval-observer.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **observer 3**.
+
+The third observer, plus something the other two did not have: a stateful dependency. The
+index is a thing that gets built, goes stale, and has contents somebody chose.
+
+The hard question: **who builds the index, when does it refresh, and what is in it?** The
+third part of that question is the whole phase.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Answer the question first.** Before building: why might retrieval beat a trained model
 here? Write two sentences. One about what the index retains that weights discard, one about
 what a 3% positive rate does to gradient-based learning.

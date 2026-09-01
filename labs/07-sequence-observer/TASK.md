@@ -1,5 +1,24 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/07-sequence-observer.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **observer 2**.
+
+The second observer, same template. Then the part that matters:
+
+The hard question: **what does this observer read that observer 1 does not?** If the honest
+answer is "the same information in a different shape", you have designed a reimplementation,
+and this phase is going to prove it numerically.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Write the control first.** In `experiments/07-heuristic-control.md`, before any model
 exists: define the cheapest heuristic that uses each test's history. State what result would
 make you keep the sequence model and what result would make you throw it away.

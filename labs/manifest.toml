@@ -13,7 +13,11 @@ question = "A build is red. What decision is actually being made, and by whom?"
 acts = "1"
 minutes = 25
 level = 1
-required = ["PROBLEM.md", "knowns/00-start-here.md"]
+required = [
+  "design/00-start-here.md",
+  "PROBLEM.md",
+  "knowns/00-start-here.md",
+]
 
 [[phases]]
 id = "01"
@@ -24,6 +28,7 @@ acts = "2, 3"
 minutes = 50
 level = 2
 required = [
+  "design/01-decision-and-cost.md",
   "PROBLEM.md",
   "decisions/01-output-space.md",
   "ai-ledger/01-decision-and-cost.md",
@@ -39,6 +44,7 @@ acts = "4"
 minutes = 75
 level = 2
 required = [
+  "design/02-measurement.md",
   "decisions/02-metric-ladder.md",
   "ci_triage/metrics.py",
   "tests/test_metrics.py",
@@ -55,6 +61,7 @@ acts = "5"
 minutes = 45
 level = 3
 required = [
+  "design/03-ground-truth.md",
   "decisions/03-label-procedure.md",
   "experiments/03-rerun-bias.md",
   "ai-ledger/03-ground-truth.md",
@@ -70,6 +77,7 @@ acts = "6"
 minutes = 60
 level = 3
 required = [
+  "design/04-data-and-licence.md",
   "decisions/04-dataset-choice.md",
   "ci_triage/data.py",
   "tests/test_data.py",
@@ -87,6 +95,7 @@ acts = "4, 6"
 minutes = 60
 level = 4
 required = [
+  "design/05-splits-and-baseline.md",
   "ci_triage/splits.py",
   "tests/test_splits.py",
   "experiments/05-split-comparison.md",
@@ -105,6 +114,7 @@ acts = "7, 8"
 minutes = 75
 level = 4
 required = [
+  "design/06-tabular-and-the-pivot.md",
   "ci_triage/tabular.py",
   "tests/test_tabular.py",
   "experiments/06-calibration-tradeoff.md",
@@ -124,6 +134,7 @@ acts = "8"
 minutes = 60
 level = 4
 required = [
+  "design/07-sequence-observer.md",
   "ci_triage/sequences.py",
   "tests/test_sequences.py",
   "experiments/07-heuristic-control.md",
@@ -141,6 +152,7 @@ acts = "8"
 minutes = 60
 level = 5
 required = [
+  "design/08-retrieval-observer.md",
   "ci_triage/retrieval.py",
   "tests/test_retrieval.py",
   "artifacts/results/retrieval.json",
@@ -158,6 +170,7 @@ acts = "9, 11, 12"
 minutes = 60
 level = 5
 required = [
+  "design/09-architecture-independence.md",
   "ci_triage/contracts.py",
   "tests/test_contracts.py",
   "decisions/09-independence.md",
@@ -176,6 +189,7 @@ acts = "10"
 minutes = 75
 level = 5
 required = [
+  "design/10-fusion-and-arbiter.md",
   "ci_triage/fusion.py",
   "tests/test_fusion.py",
   "experiments/10-fusion-comparison.md",
@@ -194,6 +208,7 @@ acts = "13"
 minutes = 75
 level = 5
 required = [
+  "design/11-slm-and-the-ledger.md",
   "experiments/11-finetune-vs-tfidf.md",
   "artifacts/results/slm.json",
   "decisions/11-memory-ledger.md",
@@ -210,6 +225,7 @@ acts = "14, 15, 16"
 minutes = 60
 level = 6
 required = [
+  "design/12-self-deception-and-handoff.md",
   "FAILURES.md",
   "docs/prior-work.md",
   "tests/test_invariants.py",

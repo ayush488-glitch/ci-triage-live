@@ -1,5 +1,25 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/06-tabular-and-the-pivot.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **observer 1**.
+
+The first observer, to the full slice template. Inputs read, output shape, calibration
+state, cost, latency, and its failure mode.
+
+The hard question: **what does this observer do on a project it has never seen?** You are
+about to find out that the answer matters enormously. Design the behaviour before you
+measure it, so the measurement can contradict you.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Predict what calibration does.** Before you calibrate anything, write in
 `experiments/06-calibration-tradeoff.md`: what will happen to ECE, and what will happen to
 AUC. Commit to a direction for both.

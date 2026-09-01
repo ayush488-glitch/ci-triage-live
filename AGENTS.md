@@ -16,6 +16,9 @@ defeats the point.
 ## You may not
 
 - decide what to build;
+- decide what a component may read, what it emits, when it refuses, or what constraint it
+  holds — those are written by the learner in `design/NN-*.md` before you touch a file;
+- write any code in a phase whose `design/` file does not yet exist;
 - choose the metric, the split, the threshold, or the architecture;
 - report a number that was not produced by a command that was actually run;
 - present `labs/*/expected/REFERENCE.md` as the learner's own reasoning;

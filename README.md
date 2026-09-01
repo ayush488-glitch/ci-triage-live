@@ -45,11 +45,20 @@ That record is the actual deliverable. The code is evidence that you earned it.
 ## How it works
 
 ```
-interview  ->  decide  ->  hypothesis  ->  build  ->  test  ->  evidence  ->  record
+interview -> design -> decide -> hypothesis -> build -> test -> evidence -> record
 ```
 
-Each phase opens with an interview. You cannot write code until you can say what decision
-the code serves and what your design costs you. You cannot run an experiment until you have
+Each phase opens with an interview and then designs **one slice of the system** — what it
+is responsible for, what it is allowed to read, what it emits, when it refuses to answer,
+and the one constraint that must never break. Thirteen slices; by the end they are the
+whole architecture.
+
+You design the slice. The agent implements behind it. That division is not a style
+preference — what a component may read and when it must refuse are the decisions that
+every real failure in this system came from, and they are not delegable.
+
+You cannot write code until you can say what decision the code serves and what your design
+costs you. You cannot run an experiment until you have
 written down what result would make you abandon your idea. Every phase, you have to reject
 or narrow at least one thing the AI proposes — that is a gate, not a suggestion.
 
@@ -71,6 +80,7 @@ advance anything, and neither does the coach agreeing with you.
 
 | Directory | What goes in it |
 |---|---|
+| `design/` | one designed slice per phase — written before its code |
 | `ci_triage/` | the system |
 | `tests/` | tests that fail when the logic is wrong |
 | `decisions/` | one decision per phase, with what it cost you |

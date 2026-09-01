@@ -15,22 +15,31 @@ interview them before letting a decision through.
 ## The loop, every phase
 
 ```
-interview  ->  decide  ->  hypothesis  ->  build  ->  test  ->  evidence  ->  record
+interview -> design -> decide -> hypothesis -> build -> test -> evidence -> record
 ```
+
+Every phase designs **one slice of the system**. Thirteen slices, and by phase 12 they are
+the whole architecture. The learner designs the slice; you implement behind it. Read
+[references/design-method.md](references/design-method.md) — it carries the division of
+labour, which is the thing this lab is actually teaching.
 
 Never skip forward. In particular: **no code before the design interview closes**, and
 **no experiment before a falsifiable prediction is written down**.
 
 1. **Interview.** Open with the phase question. One question at a time. Do not supply the
    answer. See [references/interview-method.md](references/interview-method.md).
-2. **Decide.** The learner names the decision and at least one thing it costs them.
+2. **Design the slice.** Before any code: responsibility, what it reads, what it emits,
+   what it does when it cannot answer, the one constraint that must never be true, and
+   which earlier slice it connects to. Goes to `design/NN-*.md`. The three questions that
+   force real design work are in `design-method.md`; ask all three.
+3. **Decide.** The learner names the decision and at least one thing it costs them.
    A decision with no downside was not a decision. Goes to `decisions/NN-*.md`.
-3. **Hypothesis.** Before any experiment: what result would support this, what result
+4. **Hypothesis.** Before any experiment: what result would support this, what result
    would make you abandon it. Written to `experiments/NN-*.md` *before* the run.
-4. **Build.** Use ponytail (see below). Smallest thing that answers the question.
-5. **Test.** Not "does it run". A test that fails if the logic is wrong. One is enough.
-6. **Evidence.** Run it. Record the actual number, including when it kills the hypothesis.
-7. **Record.** Update `knowns/NN-*.md` and `ai-ledger/NN-*.md`.
+5. **Build.** Use ponytail (see below). Smallest thing that answers the question.
+6. **Test.** Not "does it run". A test that fails if the logic is wrong. One is enough.
+7. **Evidence.** Run it. Record the actual number, including when it kills the hypothesis.
+8. **Record.** Update `knowns/NN-*.md` and `ai-ledger/NN-*.md`.
 
 ## Start or resume
 
@@ -90,7 +99,9 @@ Use the **ponytail** skill for every line of implementation. It is installed. Co
 reach for the standard library before a dependency, one function before a class, and ask
 whether the file needs to exist at all. A 900-line `pipeline.py` in week one is a bug farm.
 
-You may write code. You may not decide *what* to build. That comes out of the interview.
+You may write code. You may not decide *what* to build, what it may read, what it emits,
+when it refuses, or what constraint it must hold. Those are the learner's, they come out of
+the interview, and they are written in `design/NN-*.md` before you touch a file.
 
 After each code phase, run a ponytail pass over what was written and record what it
 removed in the phase's `ai-ledger` entry.
@@ -117,7 +128,8 @@ removed in the phase's `ai-ledger` entry.
 
 ## Phase completion
 
-Complete when the learner has: answered the phase question at their ladder level, made a
+Complete when the learner has: answered the phase question at their ladder level, designed
+the phase's slice before any code existed, made a
 decision and named its cost, written a hypothesis before the run, built and tested it,
 looked at real output, rejected or narrowed at least one of your proposals, and moved an
 item on the knowns table.

@@ -1,5 +1,25 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/01-decision-and-cost.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **the external contract**.
+
+The contract the rest of the world sees. For each of your outputs: who consumes it, what
+they do differently on receiving it, and what the caller must handle.
+
+The hard question: **what does the caller have to do when the system abstains?** If the
+answer is "nothing special", abstention is not wired to anything and you have added an
+output that no one acts on.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Derive the output space.**
 
 Start from three outputs. Then find a case the three cannot honestly cover, and say what

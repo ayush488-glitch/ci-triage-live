@@ -1,5 +1,24 @@
 # Task
 
+## Design the slice — before anything else
+
+Write `design/11-slm-and-the-ledger.md` using the template in [design/README.md](../../design/README.md):
+responsibility, reads, emits, refuses, constraint, connects to.
+
+This phase's slice is **the explanation layer**.
+
+The explanation component. What it receives, what it may say, and what it may never do.
+
+The hard question: **what happens to the explanation when the verdict is wrong?** A fluent
+explanation of a wrong verdict is more dangerous than no explanation, because it transfers
+the system's confidence to a human who cannot check it.
+
+No code in this phase until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses. The agent implements behind that.
+
+---
+
+
 **1. Write the ledger by hand.** For a 3-billion-parameter model at 16-bit precision, work
 out in `decisions/11-memory-ledger.md`:
 
