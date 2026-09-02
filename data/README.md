@@ -24,22 +24,37 @@ you download:
 
 Phases 04, 06, 07 need only the CSVs. Phases 08 and 09 read the archives.
 
-## The four-project subset
+## The three-project subset
 
-You do **not** download 6.5 GB. Take these four, which are the small ones:
+You do **not** download 6.5 GB. Take these three:
 
-| Project | Archive |
-|---|---|
-| `apache-commons-exec` | 36 MB |
-| `kevinsawicki-http-request` | 38 MB |
-| `google-jimfs` | 41 MB |
-| `tootallnate-java-websocket` | 55 MB |
-| **total** | **170 MB** |
+| Project | Archive | flaky | deterministic |
+|---|---|---|---|
+| `square-okhttp` | 497 MB | 116 | 118 |
+| `tootallnate-java-websocket` | 55 MB | 43 | 0 |
+| `kevinsawicki-http-request` | 37 MB | 15 | 0 |
+| **total** | **589 MB** | | |
 
-170 MB downloads in a couple of minutes and the derivation runs on a laptop. You will run
-the same pipeline the full build ran; you will just run it over four projects instead of
-seventeen, so your absolute numbers will differ from the ones in the lecture. That is
-expected and you should say so whenever you quote one.
+589 MB downloads in a few minutes and the derivation runs on a laptop. You will run the
+same pipeline the full build ran, over three projects instead of seventeen, so your
+absolute numbers will differ from the lecture's. That is expected and you should say so
+whenever you quote one.
+
+**Take okhttp even though it is the largest of the three.** It is the only project in the
+whole dataset with a real balance of both classes — 116 flaky and 118 deterministic.
+Every other project is flaky-only or empty.
+
+That matters more than it looks. Several phases need **two classes** to work at all:
+
+- phase 09 builds a retrieval index, and a single-class index scores a fake 1.0;
+- phase 11 compares fusion strategies, which needs cases that can disagree;
+- phase 12 builds a training corpus, and you cannot fine-tune a flaky-detector on data
+  with no flaky examples in it.
+
+A subset chosen by download size alone gives you none of that. The first run of this lab
+was done on the four *smallest* archives — two of which contain **zero** flaky tests — and
+hit a single-class wall in three separate phases before anyone worked out why. The
+constraint that matters is class balance, not megabytes.
 
 `spring-projects-spring-boot.tgz` alone is 2.6 GB. Do not start there.
 
