@@ -1,4 +1,4 @@
-# Phase 06 — the split is the experiment
+# Lab 06 — the split is the experiment
 
 ```
 Start -> Cost -> Measure -> Truth -> Data -> [Splits] -> Observers -> Fusion -> Handoff
@@ -14,21 +14,20 @@ well your model memorised which project a row came from.
 Before you run it, you are going to write down which you expect and by how much. Most
 people predict a small gap.
 
-## What this phase is
+## Your focus
 
 The phase that decides whether anything else in this lab means anything. Every number after
 this inherits the split.
 
-## What you will produce
+## Deliverables
 
-`ci_triage/splits.py`, `tests/test_splits.py`, `experiments/05-split-comparison.md` (written
-*before* the run), `artifacts/results/baseline.json`, `decisions/05-split-choice.md`, an
-`ai-ledger/` entry, and `knowns/05-splits-and-baseline.md`.
+`ci_triage/splits.py`, `tests/test_splits.py`, `experiments/06-split-comparison.md` (written
+*before* the run), `artifacts/results/baseline.json`, `decisions/06-split-choice.md`, an
+`ai-ledger/` entry, and `knowns/06-splits-and-baseline.md`.
 
-## Time
+## Suggested pace
 
-About 60 minutes. Rubric level 4 — you predict first, you defend the result afterwards. The
-whiteboard defence starts here.
+About 60 minutes. Predict first, then defend the result with the recorded evidence.
 
 ## Check
 

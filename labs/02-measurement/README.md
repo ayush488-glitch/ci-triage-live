@@ -1,4 +1,4 @@
-# Phase 02 — how would we know this is any good?
+# Lab 02 — how would we know this is any good?
 
 ```
 Start -> Cost -> [Measure] -> Truth -> Data -> Splits -> Observers -> Fusion -> Handoff
@@ -12,7 +12,7 @@ a great many real attempts on the metric everyone reaches for first.
 
 So 94% is not a result. It is barely a sentence.
 
-## What this phase is
+## Your focus
 
 The first code. You build `ci_triage/metrics.py` — and only that — plus tests. No data yet,
 no model. You are building the instruments before the experiment, which is the reverse of
@@ -22,14 +22,14 @@ themselves.
 Two traps are waiting in here on purpose. One of them is a bug that shipped in the real
 build of this system.
 
-## What you will produce
+## Deliverables
 
 `ci_triage/metrics.py`, `tests/test_metrics.py`, `decisions/02-metric-ladder.md`, an
 `ai-ledger/` entry, and `knowns/02-measurement.md`.
 
-## Time
+## Suggested pace
 
-About 75 minutes. Rubric level 2. This is the longest of the early phases and it earns it.
+About 75 minutes.
 
 ## Check
 

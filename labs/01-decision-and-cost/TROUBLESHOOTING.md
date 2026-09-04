@@ -7,8 +7,8 @@ uninformative and the test has no history. Which of the three outputs is honest 
 the assumption underneath it, and move on. Phase 12 revisits it.
 
 **`check 01` fails on `ai-ledger/01-decision-and-cost.md`** — the directory does not exist
-yet. Create it. This is the one phase where "nothing was rejected" is *not* an acceptable
-entry; phase 00 was the free one.
+yet. Create it. "Nothing was rejected" is not an acceptable entry; lab 00 did not require
+one.
 
-**The coach agreed with everything you said** — say so directly and ask it to argue the
-opposite position. If it still agrees, the phase gate will catch it.
+**Every proposal seems right** — argue the opposite case yourself. If it still survives,
+record the uncertainty and the evidence that would change your mind.

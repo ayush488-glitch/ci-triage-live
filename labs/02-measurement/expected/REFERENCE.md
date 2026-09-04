@@ -1,4 +1,4 @@
-# Reference — read after your attempt
+# Reference notes
 
 ## The constant model
 
@@ -26,7 +26,7 @@ that outputs the base rate for every case has near-perfect ECE and is worthless.
 **Brier** — squared error on the probability. One number that moves with both calibration
 and discrimination, which makes it useful as a summary and useless as a diagnosis.
 
-**Cost-weighted risk** — your phase 01 table, applied. This is the objective. Everything
+**Cost-weighted risk** — your lab 01 table, applied. This is the objective. Everything
 above it is a diagnostic.
 
 **Coverage and risk–coverage** — once abstention exists, a system has two dials. Risk on
@@ -63,7 +63,7 @@ and nothing else. It is perfectly honest about knowing nothing. There is nothing
 threshold, so there is nothing to ship.
 
 Good AUC with poor calibration is a model that has learned something and reports it on the
-wrong scale. That is fixable, and phase 06 is where you find out what fixing it costs —
+wrong scale. That is fixable, and lab 06 is where you find out what fixing it costs —
 which is not nothing.
 
 Ship the second. Calibrate it, and check what calibration did to the ranking.
@@ -81,10 +81,10 @@ def test_constant_predictor_is_accurate_and_useless():
 That single assertion pair is the whole lesson of the phase, and it will keep being true
 about every model you build after this.
 
-## What the coach probably proposed
+## A proposal worth rejecting
 
 *"Use F1"*, or *"balance precision and recall"*, or *"oversample the minority class so
 accuracy becomes meaningful"*. The last one is the interesting trap: resampling changes the
 base rate the model sees, which changes its calibration, which breaks the metric you have
-just spent an hour building. It is also, in phase 05, going to interact badly with the
+just spent an hour building. It will also interact badly with the
 split. Refuse it here and you will not have to unpick it later.

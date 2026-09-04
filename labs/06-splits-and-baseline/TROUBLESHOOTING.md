@@ -11,7 +11,7 @@ the standard deviation alongside the mean and treat a single-fold number as mean
 column really is gone. A grouped result near chance can be honest; a grouped result of
 exactly 0.5 usually means something is broken.
 
-**Random-split AUC is near 1.0** — a leaking column survived. Go back to phase 04's
+**Random-split AUC is near 1.0** — a leaking column survived. Go back to lab 04's
 invariant test and check it actually runs.
 
 **Which model?** — anything simple. Logistic regression or a small gradient-boosted model.

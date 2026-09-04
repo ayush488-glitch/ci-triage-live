@@ -14,8 +14,8 @@ The hard question: **what must the system record about a label's provenance so t
 future engineer can discount it correctly?** A label with no recorded sample size is a
 number with no error bar.
 
-No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+Do not write code until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses.
 
 ---
 
@@ -36,4 +36,4 @@ guess at the cost of a CI minute, across a real project's test suite. Write the 
 is going to be large, and that is the point.
 
 **5. Say what it forces.** Given a contaminated negative class, name one thing you must now
-do differently in evaluation. This is the sentence that phase 05 will cash in.
+do differently in evaluation. Carry this constraint into lab 05.

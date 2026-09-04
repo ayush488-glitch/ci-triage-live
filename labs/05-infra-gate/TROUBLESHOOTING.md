@@ -1,12 +1,14 @@
 # Troubleshooting
 
-**The archives are large** — take the four small projects from [data/README.md](../../data/README.md).
-`apache-commons-exec` at 36 MB is the right one to start on; it is also the control, because
-almost all of its runs are clean.
+**The archives are large** — use only the three-project subset in
+[data/README.md](../../data/README.md): `square-okhttp`, `tootallnate-java-websocket`, and
+`kevinsawicki-http-request` (589 MB total). Do not substitute the old small-project route;
+the subset was selected for the later labs' class balance.
 
-**You cannot find a run with mass failures** — `Alluxio-alluxio` is the interesting one, but
-it is 152 MB. `commons-exec` is deliberately boring; if your gate fires on it, your gate is
-over-triggering.
+**You cannot see `maven.log` in `data/raw/`** — it is nested: the project `.tgz` contains
+per-run `.tgz` files, and each run archive may contain `maven.log`. Read both archive layers
+in memory or extract one run. The subset may not expose every failure mode; record an
+unobserved verdict instead of inventing one or fetching a fourth archive.
 
 **The same test appears twice in one run** — some suites execute a test both individually and
 as part of an aggregate suite, and the two can disagree. Decide which one counts, and exclude

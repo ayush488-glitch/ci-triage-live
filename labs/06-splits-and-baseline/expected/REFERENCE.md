@@ -1,4 +1,4 @@
-# Reference — read after your attempt
+# Reference notes
 
 ## The result
 
@@ -36,8 +36,8 @@ It means the model is weakly informative on unseen projects, and the fold-to-fol
 is large enough that the true value could be materially better or worse. It is not a good
 result and it should not be dressed up as one.
 
-Two things follow, and phase 06 is where you choose between them: get better features, or
-change the question. Recording this honestly now is what makes that choice available later.
+Two things follow: get better features, or change the question. Recording this honestly now
+makes that choice available later.
 Tuning the number up here would have removed it.
 
 ## The invariant test

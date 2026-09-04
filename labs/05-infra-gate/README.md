@@ -1,11 +1,12 @@
-# Phase 05 — which runs may contribute evidence at all?
+# Lab 05 — which runs may contribute evidence at all?
 
 ```
 Start -> Cost -> Measure -> Truth -> Data -> [Infra] -> Splits -> Observers -> Fusion -> Handoff
 ```
 
-You have the archives now. Inside them is the thing everything downstream is built on: the
-outcome of every test, in every rerun.
+Use the three archives named in [data/README.md](../../data/README.md): `square-okhttp`,
+`tootallnate-java-websocket`, and `kevinsawicki-http-request`. Inside them is the thing
+everything downstream is built on: the outcome of every test, in every rerun.
 
 Some of those runs are lies.
 
@@ -16,23 +17,25 @@ raw data, exactly like a run where hundreds of tests genuinely failed.
 
 Nobody has told you how many of your runs are like this.
 
-## What this phase is
+## Your focus
 
 The gate that decides whether a run is trustworthy enough to contribute an observation.
 It runs before splits, before every observer, before anything — because a single poisoned
 run can manufacture dozens of "flaky" tests, and every phase after this inherits them.
 
-The result on one project is not a rounding error. It is a factor of roughly twenty.
+Do not assume the archive is flat: each project archive contains per-run archives, and the
+`maven.log` is inside each run archive. A multi-module Maven log can also contain several
+test-summary lines; they describe modules that must be summed, not competing totals.
 
-## What you will produce
+## Deliverables
 
 `design/05-infra-gate.md`, `ci_triage/infra.py`, `tests/test_infra.py`,
 `artifacts/results/infra.json`, `decisions/05-infra-gate.md`, an `ai-ledger/` entry, and
 `knowns/05-infra-gate.md`.
 
-## Time
+## Suggested pace
 
-About 60 minutes. Rubric level 4.
+About 60 minutes.
 
 ## Check
 

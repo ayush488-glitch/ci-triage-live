@@ -1,4 +1,4 @@
-# Reference — read after your attempt
+# Reference notes
 
 ## Why three outputs are not enough
 
@@ -14,7 +14,7 @@ assumed. It exists because there is a case the other three cannot honestly cover
 
 It is **cheap, not free**. It costs a human's attention, at 02:47, which is the most
 expensive attention in the company. A system that abstains on everything has solved
-nothing. This is why coverage becomes a metric in phase 02 — the fraction of cases the
+nothing. This is why coverage becomes a metric in lab 02 — the fraction of cases the
 system was willing to answer is part of how you judge it.
 
 ## The output space
@@ -53,7 +53,7 @@ Minimise expected cost-weighted risk: the sum over cases of the cost of the acti
 given the true cause. Accuracy counts every mistake as one mistake. Your table says they
 are not one mistake each. That is the whole argument.
 
-## What the coach probably proposed and you should have rejected
+## A proposal worth rejecting
 
 Some version of *"use accuracy, or use F1, it balances precision and recall"*. F1 is a
 balance chosen by someone who never saw your cost table. If your two costs differ by a

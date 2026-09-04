@@ -1,4 +1,4 @@
-# Phase 00 — the decision at 2:47am
+# Lab 00 — the decision at 2:47am
 
 ```
 [Start] -> Cost -> Measure -> Truth -> Data -> Splits -> Observers -> Fusion -> Handoff
@@ -19,7 +19,7 @@ That report tells you a test failed. It does not tell you why, and *why* is the 
 that determines what anyone should do. Three completely different things could have
 happened, and the report looks identical in all three.
 
-## What this phase is
+## Your focus
 
 No code, no data, no model. One move: from "a test failed" to "somebody has to do
 something, and here is what somebody actually is".
@@ -27,13 +27,13 @@ something, and here is what somebody actually is".
 Almost every ML project that fails, fails here — by starting from the data that was
 available rather than from the decision that needed making.
 
-## What you will produce
+## Deliverables
 
 `PROBLEM.md`, in your own words, and your first `knowns/` entry.
 
-## Time
+## Suggested pace
 
-About 25 minutes. Rubric level 1 — the coach will carry most of the structure.
+About 25 minutes.
 
 ## Check
 

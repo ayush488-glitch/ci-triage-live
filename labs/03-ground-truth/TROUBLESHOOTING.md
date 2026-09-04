@@ -4,8 +4,8 @@
 argument has to hold before you see a single row, or the data will talk you into believing
 its labels.
 
-**The coach keeps saying "it depends on N"** — good, that is the right answer. Ask what N
-was in the source dataset. It is documented, and finding it is part of the phase.
+**The answer keeps being "it depends on N"** — that is the right answer. Find what N was in
+the source dataset; it is documented and changes the conclusion.
 
 **`experiments/` does not exist** — create it. Nothing here is scaffolded.
 

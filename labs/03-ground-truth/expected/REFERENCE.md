@@ -1,4 +1,4 @@
-# Reference — read after your attempt
+# Reference notes
 
 ## The procedure
 

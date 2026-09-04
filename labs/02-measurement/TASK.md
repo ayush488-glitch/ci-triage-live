@@ -14,8 +14,8 @@ answer is why you can compare a trained model against a constant, against a heur
 against retrieval later, on identical terms — and it is why phase 07's control is even
 possible.
 
-No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+Do not write code until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses.
 
 ---
 
@@ -38,7 +38,7 @@ import it:
 | precision, recall at a threshold | sklearn |
 | Brier score | sklearn |
 | expected calibration error | write it — with a selectable binning scheme |
-| cost-weighted risk | write it — from your phase 01 table |
+| cost-weighted risk | write it — from your lab 01 table |
 | coverage and risk–coverage | write it |
 
 Ponytail applies. Anything sklearn already does, do not rewrite. If `metrics.py` is much
@@ -57,4 +57,4 @@ on recall, on the same input. A test asserting a metric returns a float is not a
 
 **5. Reject something.**
 
-Coach proposes, you dispose. Record it.
+Record one plausible proposal you reject and why it is wrong for this evaluation.

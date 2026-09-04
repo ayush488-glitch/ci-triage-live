@@ -14,8 +14,8 @@ The hard question: **where does the leak guard live so that it cannot be bypasse
 is a step somebody remembers to call, it will be skipped. If it is inside the only function
 that returns features, it cannot be.
 
-No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+Do not write code until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses.
 
 ---
 
@@ -43,4 +43,4 @@ a leaking column reappears in the feature matrix. Not a test that the loader run
 that catches the specific bug. This test should outlive every model you build.
 
 **6. Two label columns.** There is more than one candidate label. Choose, and justify the
-choice against your phase 00 decision.
+choice against your lab 00 decision.

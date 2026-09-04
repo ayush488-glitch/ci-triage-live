@@ -15,8 +15,8 @@ The hard question: **what is this system not allowed to do?** It does not merge 
 It does not delete the test. Naming the things it is forbidden from doing is what stops it
 quietly becoming an automation project three phases from now.
 
-No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+Do not write code until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses.
 
 ---
 

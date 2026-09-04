@@ -1,4 +1,4 @@
-# Phase 03 — is the label even true?
+# Lab 03 — is the label even true?
 
 ```
 Start -> Cost -> Measure -> [Truth] -> Data -> Splits -> Observers -> Fusion -> Handoff
@@ -12,19 +12,19 @@ test many times, and if it both passed and failed on identical code, call it fla
 
 That procedure works in one direction and not the other.
 
-## What this phase is
+## Your focus
 
 Still no data downloaded. This is an argument, not a computation, and it is the phase that
 decides how much you are allowed to believe about every number in the rest of the lab.
 
-## What you will produce
+## Deliverables
 
 `decisions/03-label-procedure.md`, `experiments/03-rerun-bias.md`, an `ai-ledger/` entry,
 and `knowns/03-ground-truth.md`.
 
-## Time
+## Suggested pace
 
-About 45 minutes. Rubric level 3 — you interpret first, the coach explains after.
+About 45 minutes.
 
 ## Check
 

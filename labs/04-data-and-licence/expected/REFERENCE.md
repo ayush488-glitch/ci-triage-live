@@ -1,4 +1,4 @@
-# Reference — read after your attempt
+# Reference notes
 
 ## Licences
 
@@ -28,17 +28,17 @@ It carries labels from *other* detection tools — iDFlakies and DeFlaker — an
 dataset for the paper's tool-comparison analysis. It has **205 positives, 0.77%**.
 
 FlakeFlagger's actual ground truth is `IsFlaky` in `test_results.csv`, produced by the
-~10,000-rerun campaign you reasoned about in phase 03. It has **828 positives**, and
+~10,000-rerun campaign you reasoned about in lab 03. It has **828 positives**, and
 **825 over the joined set — 3.157%**.
 
 The two disagree on **904 tests**.
 
 Training on `flaky` is not leakage and it is not a bug that crashes. It answers a different
 question — "would iDFlakies call this flaky" — and produces numbers that cannot be compared
-to any published baseline, including the ones in the lecture. Nothing warns you. The column
+to any published baseline, including the supplied reference results. Nothing warns you. The column
 name is the most natural one in the file.
 
-The tell is the rate. You reasoned in phase 03 that a rerun campaign at this scale should
+The tell is the rate. You reasoned in lab 03 that a rerun campaign at this scale should
 surface a few percent. 0.77% is too low for that, and the gap between 0.77% and 3.157% is
 the two tools' disagreement staring at you from the summary statistics.
 
@@ -85,4 +85,4 @@ positive count moves from 825 to something near 205 and the test fails immediate
 ## Splitting reruns in time
 
 If the same test appears multiple times, the rows are not independent. Note this now. It is
-half of what phase 05 is about.
+part of what lab 05 examines.

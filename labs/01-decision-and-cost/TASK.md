@@ -14,8 +14,8 @@ The hard question: **what does the caller have to do when the system abstains?**
 answer is "nothing special", abstention is not wired to anything and you have added an
 output that no one acts on.
 
-No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+Do not write code until this file exists. You decide what the slice is responsible for,
+what it may read, what it emits, and when it refuses.
 
 ---
 
@@ -47,5 +47,5 @@ own table.
 
 **4. Reject something.**
 
-The coach will propose at least one thing that is defensible in general and wrong here.
-Find it, refuse it, and write the reason in `ai-ledger/01-decision-and-cost.md`.
+Record one plausible proposal that is wrong for your context, why you reject it, and the
+reason in `ai-ledger/01-decision-and-cost.md`.

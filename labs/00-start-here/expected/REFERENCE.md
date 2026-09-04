@@ -1,4 +1,4 @@
-# Reference — read after your attempt
+# Reference notes
 
 ## The three causes
 
@@ -18,7 +18,7 @@ Three responses, one per cause, plus one more that people actually use:
 - wake a human up.
 
 The fourth is real and expensive, and it is the reason abstention will earn a slot in the
-output space in phase 01.
+output space in lab 01.
 
 ## The decision versus the prediction
 
