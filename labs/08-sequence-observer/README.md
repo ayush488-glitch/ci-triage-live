@@ -33,7 +33,7 @@ So it gets written down first, before the model exists.
 
 ## Time
 
-About 60 minutes. Rubric level 4.
+About 60 minutes.
 
 ## Check
 

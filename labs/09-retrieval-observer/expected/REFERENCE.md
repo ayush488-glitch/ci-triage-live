@@ -1,25 +1,29 @@
 # Reference — read after your attempt
 
-## Two experiments, two different answers
+## The corrected real-text control
 
-This is the important part, and it is why the phase asks you to run both.
+The completed three-project run could perform only the within-project evaluation. On
+square-okhttp, one real trusted exception line per test produced 102 deterministic label-0
+tests and 76 ground-truth-flaky label-1 tests. Precision@5 was **0.9831** against a
+majority baseline of **0.5730**, across 178 scored queries with five distinct neighbours
+and no abstentions.
 
-**Per-project, on okhttp, grouped by test method:** mean precision@5 = **0.896** against a
-majority baseline of **0.521**. The strongest per-component margin of any observer in the
-system.
+The prediction said precision should drop after replacing synthetic pass templates with
+real text on both sides. It did not, so the template-style explanation was falsified. That
+does not establish cross-project transfer.
 
-**Cross-project rotation, holding out a whole project:** mean precision@k = **0.474**
-against a mean majority baseline of **0.715**. It **loses to the baseline.**
+The real-text cross-project evaluation was not performable: the remaining eligible
+projects could not form compatible two-class train and held-out populations. Record that
+outcome as unscored rather than replacing it with a borrowed number.
 
-Same component. Same code. Opposite conclusions.
+The separate 17-project precomputed artifact reports precision@k **0.474** against a
+majority baseline of **0.715** for an older cross-project rotation. It is useful historical
+evidence, but it used a different corpus construction and cannot be presented as the
+missing arm of the corrected real-text experiment.
 
-If you ran only the first, you would ship retrieval as the crown jewel. If you ran only the
-second, you would delete it. The honest statement needs both: *retrieval is strong within a
-project it has seen and does not transfer to an unseen one* — which is the same boundary
-the tabular observer hit in phase 07, arriving from a completely different direction.
-
-Two independent components failing at the same boundary is evidence about the **problem**,
-not about either component.
+The honest statement is narrower: *retrieval is strong inside the corrected okhttp corpus;
+cross-project behavior remains unknown in this run, while older broader evidence warns
+that transfer may fail.*
 
 ## Why it wins where it wins
 
@@ -57,8 +61,8 @@ def test_index_is_not_single_class():
     assert len(set(index_labels())) > 1
 ```
 
-That is the phase's invariant. Only three of the projects had both classes, which is why the
-cross-project rotation above scored just three rotations.
+That is the phase's invariant. The broader scan found very few projects with both classes,
+which is why corpus eligibility must be reported beside every evaluation.
 
 ## Self-retrieval
 

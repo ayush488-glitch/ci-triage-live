@@ -16,7 +16,7 @@ them is not independent evidence — and it is now a fact you can check rather t
 principle you hope for.
 
 No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+what it may read, what it emits, and when it refuses.
 
 ---
 
@@ -41,5 +41,6 @@ identically. Fix that in the contract.
 probability without declaring whether it is calibrated. That flag is the thing downstream
 depends on and the thing people forget.
 
-**6. Graded interview.** Covers phases 00–09. The independence argument is what is being
-graded. Verdict to `.ci-lab/interviews/09.md`.
+**6. Record the review.** In `.ci-lab/interviews/10.md`, state the case-level and run-level
+questions, the observed input overlap, and how the contract prevents agreement from being
+mistaken for independent evidence.

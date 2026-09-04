@@ -18,7 +18,7 @@ ranked queue for a human to work through needs the discrimination.
 
 Perfect calibration at chance discrimination is a model that has learned the base rate.
 ECE alone would call it excellent. It cannot be thresholded into any useful action because
-every case gets the same score. You will meet this again in phase 07, from a model that
+every case gets the same score. You will meet this again in phase 08, from a model that
 looks much more sophisticated.
 
 ## The pivot
@@ -32,7 +32,7 @@ own history, can we predict flakiness in it". The second is easier, and — read
 — it is also what actually happens, because each team runs its own CI on its own history.
 
 What you lose: the system no longer works on day one for a new repository. That is a real
-cost and it goes in `decisions/06-the-pivot.md`, not in a footnote. It becomes a
+cost and it goes in `decisions/07-the-pivot.md`, not in a footnote. It becomes a
 known-unknown: how much history does a new project need before the per-project model is
 usable? Nobody has measured that here.
 

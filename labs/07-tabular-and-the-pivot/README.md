@@ -19,18 +19,18 @@ honest options and one dishonest one, and most projects take the dishonest one.
 
 ## What this phase is
 
-The first time a result is bad and you have to decide what that means. This is the phase the
-whole course is actually about.
+The first time a result is bad and you have to decide what that means. This decision shapes
+the rest of the project.
 
 ## What you will produce
 
-`ci_triage/tabular.py`, `tests/test_tabular.py`, `experiments/06-calibration-tradeoff.md`,
-`artifacts/results/tabular.json`, `decisions/06-the-pivot.md`, an `ai-ledger/` entry,
-`knowns/06-tabular-and-the-pivot.md`, and `.ci-lab/interviews/06.md`.
+`ci_triage/tabular.py`, `tests/test_tabular.py`, `experiments/07-calibration-tradeoff.md`,
+`artifacts/results/tabular.json`, `decisions/07-the-pivot.md`, an `ai-ledger/` entry,
+`knowns/07-tabular-and-the-pivot.md`, and `.ci-lab/interviews/07.md`.
 
 ## Time
 
-About 75 minutes. Rubric level 4, and the first **graded interview**.
+About 75 minutes.
 
 ## Check
 

@@ -13,7 +13,7 @@ The hard question: **which of your twelve earlier slices would you find out had 
 which would fail silently?** Every silent one needs an instrument. That list is the phase.
 
 No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+what it may read, what it emits, and when it refuses.
 
 ---
 
@@ -53,6 +53,6 @@ A document saying these things is a wish. A test is a guarantee.
 The known-unknowns column should be the longest one. If it is short, you have not been
 honest about what you do not know.
 
-**5. Exit interview.** The coach interviews you across the whole project and writes the
-verdict to `.ci-lab/interviews/12.md`. The question being graded: could another engineer
-take this, reproduce your evidence, and continue?
+**5. Record the handoff review.** In `.ci-lab/interviews/13.md`, answer: can another
+engineer reproduce the evidence, find every decision and its cost, and continue from the
+known unknowns?

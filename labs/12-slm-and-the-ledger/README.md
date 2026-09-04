@@ -1,8 +1,5 @@
 # Phase 12 — does the fine-tune beat the boring baseline?
 
-> **Ahead of the lecture.** This phase covers material from the deck that has not been
-> taught yet. Run it if you want to get ahead; the coach will explain from scratch.
-
 ```
 Fusion -> [Explanation] -> Handoff
 ```
@@ -10,11 +7,11 @@ Fusion -> [Explanation] -> Handoff
 Every component so far outputs a verdict and a probability. None of them says *why*. An
 engineer at 02:47 with "flaky, 0.83" still has to go and read the logs.
 
-So: fine-tune a small language model on this system's own outputs, and have it explain.
+Test whether a small language model can explain this system's outputs.
 
-Before you rent a GPU, three things. Work out what it will cost — line by line, in memory.
-Work out what the *training data* costs, because there isn't any and you have to buy it.
-And write down what result would make you not do either.
+Before you rent a GPU, work out the memory and training-data costs, measure the majority and
+cheap text baselines, and define the stop gate. Fine-tuning is optional evidence-gathering,
+not an automatic next step.
 
 ## What this phase is
 
@@ -24,16 +21,17 @@ difference between choosing LoRA and repeating that LoRA is good.
 
 ## What you will produce
 
-`experiments/11-finetune-vs-tfidf.md` (written before anything runs),
-`artifacts/results/slm.json`, `decisions/11-memory-ledger.md`, an `ai-ledger/` entry, and
-`knowns/11-slm-and-the-ledger.md`.
+`experiments/12-finetune-vs-tfidf.md` (written before anything runs),
+`experiments/12-distillation-cost.md`, `artifacts/results/distill-corpus.json`,
+`artifacts/results/slm.json`, `decisions/12-memory-ledger.md`, an `ai-ledger/` entry, and
+`knowns/12-slm-and-the-ledger.md`.
 
 No GPU? `precomputed/` has the runs. The hypothesis still gets written first, and the
 arithmetic still gets done by hand.
 
 ## Time
 
-About 75 minutes. Rubric level 5.
+About 95 minutes.
 
 ## Check
 

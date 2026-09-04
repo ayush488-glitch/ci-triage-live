@@ -8,8 +8,8 @@ the prompt contains the observers' labels but not the evidence they were derived
 the model is reasoning over three words with nothing underneath them.
 
 **API costs are mounting** — cap the number of arbitrated cases and record the cap. Fusion
-comparison does not need the whole dataset; it needs enough cases to distinguish five
-strategies.
+comparison can use a smaller frozen case set, but every ranked strategy must run on all of
+it. A partial LLM run is incomplete, not a ranked result.
 
 **Calibrating the LLM output helps a lot** — it will, and it still will not be enough.
 Report both rows.

@@ -10,7 +10,7 @@ collapse, and collapse is a bug, not a result.
 
 **Pooled metrics look different from per-fold means** — pooling calibrated probabilities
 across folds mixes different calibrators. Report per-fold and say which you are quoting.
-This mistake shipped in the original build.
+This error is easy to make when calibrators differ across folds.
 
 **Per-project training has too few rows for some projects** — expected. Set a minimum row
 count, report how many projects met it, and treat the rest as out of scope. Do not silently

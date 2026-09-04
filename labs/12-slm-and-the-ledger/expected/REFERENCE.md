@@ -27,7 +27,7 @@ dominate, which happens with long sequences.
 
 ## Decide or explain
 
-Phase 10 gave you the evidence: as a decider, the language model came last, and was worse
+Phase 11 gave you the evidence: as a decider, the language model came last, and was worse
 than the majority baseline on both accuracy and calibration. Its role is **explanation** —
 turning a verdict plus its evidence into something a human can read at 02:47.
 
@@ -48,13 +48,13 @@ label cases — distillation. The real run:
 zero parse failures
 ```
 
-The cost came in **~2.5x over the estimate**. Two reasons, both worth internalising: the
-teacher runs adaptive thinking by default, so output tokens ran 300+ per call rather than
+The cost came in **~2.5x over the estimate**. Two reasons: the labeling model ran adaptive
+thinking by default, so output tokens ran 300+ per call rather than
 the ~193 assumed; and the estimate had been taken from a short synthetic case, while real
 prompts carry real stack traces and real per-observer evidence. **Price on a rendered
 prompt, never a toy one.**
 
-There is a second cost lesson here. The per-token rate for the teacher could not be
+There is a second cost lesson here. The per-token rate for the labeling model could not be
 verified — the public pricing page did not list the model, and the hosted rate is known to
 differ from the first-party rate by roughly 2x for the same model era. The rule that was
 followed: **never hardcode a rate you have not verified.** A stand-in rate was used, and the
@@ -64,17 +64,21 @@ every cost number in the system while looking perfectly correct.
 And the finding that decides everything downstream:
 
 ```
-teacher labels: 1,376 FLAKY / 60 NOT_FLAKY  (95.8%)
+labeler outputs: 1,376 FLAKY / 60 NOT_FLAKY  (95.8%)
 ```
 
-The teacher is massively skewed — and it is skewed because of a design detail, not by
+The labeler output is massively skewed — and it is skewed because of a design detail, not by
 accident: this corpus's retrieval observer was still using an older label mapping, so the
-teacher was partly answering a different question than the one the student would be asked.
+labeler was partly answering a different question than the one the fine-tuned model faced.
 
-Either way, the majority baseline for the student is **~95.8%, not 50%**. A student scoring 94% here is not "pretty good" — it is worse than a constant.
+Either way, the majority baseline is **~95.8%, not 50%**. A model scoring 94% here is worse
+than a constant predictor.
 Phase 02, arriving again, four phases later, in a place nobody expects it.
 
-## The result
+## A reference run after the gate
+
+This run passed its written go condition and is an example, not an instruction to fine-tune.
+If your majority and TF-IDF gate does not justify a GPU run, stopping is the correct result.
 
 LoRA r=8/alpha=16 on `q_proj`/`v_proj`, Qwen2.5-Coder-3B-Instruct, one RTX 4090. The
 minority class was **oversampled 12x** so the model saw ~34% NOT_FLAKY rather than 4%.
@@ -85,7 +89,7 @@ Training converged cleanly: loss 1.248 → 0.494 → 0.167 → ~0.13. Adapter 7.
 Evaluated on 189 held-out examples, majority baseline **95.24%**:
 
 ```
-student accuracy     95.24%   (180/189)   beats_majority: FALSE
+model accuracy       95.24%   (180/189)   beats_majority: FALSE
 predictions          FLAKY 189   NOT_FLAKY 0
 ```
 
@@ -95,7 +99,7 @@ Then the slice that settles it — 116 tests that are genuinely deterministic, w
 correct answer is NOT_FLAKY every time:
 
 ```
-student accuracy     0.0%   (0/116)
+model accuracy       0.0%   (0/116)
 predictions          FLAKY 116   NOT_FLAKY 0
 ```
 
@@ -117,7 +121,7 @@ Every approach tried against this corpus collapsed to the majority class:
 3. the sequence LSTM converging to the trivial heuristic (phase 08)
 4. zero-shot Qwen2.5-Coder-3B
 5. few-shot Qwen2.5-Coder-3B
-6. the LoRA fine-tuned student
+6. the LoRA fine-tuned model
 
 Different model classes, different calibration methods, different training techniques, same
 failure. The common factor is not any component's design: **only 51–60 real NOT_FLAKY

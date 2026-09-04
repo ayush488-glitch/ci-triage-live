@@ -14,7 +14,7 @@ The hard question: **who builds the index, when does it refresh, and what is in 
 third part of that question is the whole phase.
 
 No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+what it may read, what it emits, and when it refuses.
 
 ---
 
@@ -23,8 +23,9 @@ what it may read, what it emits, and when it refuses. The agent implements behin
 here? Write two sentences. One about what the index retains that weights discard, one about
 what a 3% positive rate does to gradient-based learning.
 
-**2. Decide what goes in the index.** In `decisions/08-index-contents.md`, state explicitly
-what is indexed and what is deliberately not. Then answer this before you read further:
+**2. Decide what goes in the index.** In `decisions/09-index-contents.md`, state explicitly
+what is indexed and what is deliberately not. The corpus must contain real text from both
+label classes; labels, placeholders, or synthetic text are not a retrieval control. Then answer:
 *if the index contained only failures, what would the neighbours of a query look like?*
 
 **3. Build it.** A sentence embedding model, a nearest-neighbour search, a vote over the top
@@ -34,13 +35,16 @@ component. If you are writing an index class, stop.
 **4. Test the thing that actually breaks.** `tests/test_retrieval.py` must fail if the index
 contains only one class. That is the invariant, and it is the bug.
 
-**5. Measure it twice, two different ways.** Both go in `artifacts/results/retrieval.json`:
+**5. Measure it where the data supports it.** Record the evaluation population, eligible
+projects, and skipped projects in `artifacts/results/retrieval.json`:
 
 - **within a project** — index and query the same project, grouped by test method;
-- **across projects** — hold out a whole project, index the rest, query the held-out one.
+- **across projects** — only if enough held-out projects and their training indexes contain
+  real text from both classes; hold out a whole project, index the rest, and query it.
 
-Report precision@k *and* the majority baseline for each. Predict, before running, whether
-they will agree. Then explain the gap you find, because there will be one.
+Report precision@k and the majority baseline for every completed evaluation. If the
+cross-project evaluation is not performable, record why and leave it unscored; do not invent
+a cross-project number or reuse a reference result.
 
 **5b. Count distinct tests, not just neighbours.** Five neighbours that are the same test
 seen five times are not five opinions. Report the distinct-test count beside k.

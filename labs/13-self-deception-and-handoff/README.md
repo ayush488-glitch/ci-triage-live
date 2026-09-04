@@ -1,7 +1,5 @@
 # Phase 13 — how could this system lie to us?
 
-> **Ahead of the lecture.**
-
 ```
 ... -> Fusion -> [Handoff]
 ```
@@ -26,11 +24,11 @@ Then the handoff. Can another engineer take this and continue.
 ## What you will produce
 
 `FAILURES.md`, `docs/prior-work.md`, `tests/test_invariants.py`, an assembled `KNOWNS.md`,
-an `ai-ledger/` entry, and `.ci-lab/interviews/12.md` — the exit interview.
+an `ai-ledger/` entry, and `.ci-lab/interviews/13.md`.
 
 ## Time
 
-About 60 minutes. Rubric level 6. The coach questions and reviews; it does not create.
+About 60 minutes.
 
 ## Check
 

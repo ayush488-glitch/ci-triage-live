@@ -14,13 +14,13 @@ explanation of a wrong verdict is more dangerous than no explanation, because it
 the system's confidence to a human who cannot check it.
 
 No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+what it may read, what it emits, and when it refuses.
 
 ---
 
 
 **1. Write the ledger by hand.** For a 3-billion-parameter model at 16-bit precision, work
-out in `decisions/11-memory-ledger.md`:
+out in `decisions/12-memory-ledger.md`:
 
 - weights;
 - gradients;
@@ -36,7 +36,7 @@ activations instead of storing them. Redraw the ledger after each. Then say what
 actually rent.
 
 **3. Decide the role.** Should this model *decide* or *explain*? You have evidence from
-phase 10 about what happens when a language model decides. Write the argument.
+phase 11 about what happens when a language model decides. Write the argument.
 
 **4. The hypothesis, before you spend anything.** In `experiments/12-finetune-vs-tfidf.md`:
 
@@ -45,7 +45,7 @@ phase 10 about what happens when a language model decides. Write the argument.
 - the number that would make you keep going;
 - the number that would make you stop.
 
-**4b. Buy the training data — distillation.** There is no labelled explanation corpus. You
+**4b. Price the training data — distillation.** There is no labelled explanation corpus. You
 make one by having a strong model label your cases, and that model's labels become your
 training data. This is a purchase, so it gets priced before it is made.
 
@@ -58,18 +58,24 @@ In `experiments/12-distillation-cost.md`, **before spending anything**:
   if you cannot verify it, say which rate you are standing in and that it may be wrong.
 - multiply by your corpus size. Write the budget and the number that would make you stop.
 
-Then run it and write `artifacts/results/distill-corpus.json` with: examples labelled,
-examples declined, parse failures, actual total cost, cost per call, and **the label
-distribution**.
+Only run distillation if the written budget permits it. If it does, write
+`artifacts/results/distill-corpus.json` with examples labelled, examples declined, parse
+failures, actual total cost, cost per call, and **the label distribution**. Otherwise record
+the priced, unrun decision in that JSON and use an existing or precomputed labelled corpus
+for the gate.
 
-That last one is not bookkeeping. Whatever your teacher's class balance is, **that is your
-student's majority baseline** — not 50%. Work it out and write it down now, because in step
-6 you will need it to know whether the fine-tune did anything at all.
+That last one is not bookkeeping. The labeler corpus's class balance is **the majority
+baseline** — not 50%. Work it out and write it down now.
 
-**5. Run the baseline first.** TF-IDF plus a linear classifier, on the same split. Costs
-nothing, takes seconds. Get that number before the fine-tune exists.
+**5. Apply the pre-GPU stop gate.** On one frozen split, run the majority baseline and
+TF-IDF plus a linear classifier. Record both before provisioning a GPU. State the minimum
+result that would justify fine-tuning; if neither the baseline comparison nor the available
+class balance leaves a defensible path to that result, stop and record the no-fine-tune
+decision.
 
-**6. Then the fine-tune.** Report both, plus the majority baseline, on the same split, in
-`artifacts/results/slm.json`.
+**6. Fine-tune only after a written go decision.** If the gate passes, report the fine-tune,
+TF-IDF, and majority baseline on the same frozen split in `artifacts/results/slm.json`. If
+it does not, record the two baselines, gate outcome, and why no GPU run was warranted.
 
-**7. Say what you would do.** Given the three numbers, what ships?
+**7. Say what you would do.** Given the completed comparisons and any stop decision, what
+ships?

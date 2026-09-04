@@ -2,7 +2,9 @@
 
 ## The comparison
 
-Verified, n_train 55 / n_calibration 55 / n_test 74, majority baseline **0.5676**:
+This reference comparison used one aligned split (n_train 55 / n_calibration 55 /
+n_test 74), with majority baseline **0.5676**. These rows are rankable because every
+strategy completed on the same test cases; do not rank an incomplete strategy.
 
 | strategy | accuracy | ECE | Brier | beats majority |
 |---|---|---|---|---|
@@ -28,7 +30,7 @@ accuracy you are picking at random among them.
 
 ## Why
 
-Print the prompt. In the original build, the rendered arbiter prompt contained the three
+Print the prompt. In the reference run, the rendered arbiter prompt contained the three
 observers' *labels* and none of the *evidence*. The model was asked to adjudicate between
 three words. It produced confident, fluent, well-structured reasoning over nothing at all,
 which is precisely what a language model does when given nothing at all.
@@ -50,7 +52,7 @@ to say. The mean averaged one strong true signal with three uninformed ones and 
 
 Averaging assumes every input is an independent estimate of the same quantity. When one
 observer has decisive evidence and the others have none, that assumption is false, and the
-mean is the wrong aggregation. This is where phase 09's "absence is not uniformity" rule
+mean is the wrong aggregation. This is where phase 10's "absence is not uniformity" rule
 earns its place: had the uninformed observers been encoded as *absent* rather than as
 uniform distributions, the mean would have had nothing to dilute with.
 
@@ -61,7 +63,7 @@ uniform distributions, the mean would have had nothing to dilute with.
 2. **It escalates, it does not overrule.** An arbiter that can silently reverse a calibrated
    observer removes the only component whose numbers you trust.
 3. **Its output is marked uncalibrated** unless it has been calibrated and measured. By
-   phase 09 rule 1, downstream has to know.
+   phase 10 rule 1, downstream has to know.
 
 A fourth is worth adding: it runs only on disagreement. That is where the cheap components
 have run out, it is a small fraction of traffic, and it is the only place its cost is
@@ -71,9 +73,9 @@ justified.
 
 The most capable component in the system is the worst-performing one, and it is the most
 expensive. That is not an argument against language models. It is an argument for measuring
-before deploying, and for the cost ladder in phase 11: capability is not free, and it is not
+before deploying, and for the cost ladder in phase 12: capability is not free, and it is not
 automatically better.
 
 Three cheap strategies tie at 90.5%. Ship one of those. Use the model where it is actually
-better than the alternatives — explanation, in phase 11 — rather than where it is most
+better than the alternatives — explanation, in phase 12 — rather than where it is most
 impressive to say you used it.

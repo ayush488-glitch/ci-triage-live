@@ -14,12 +14,12 @@ from doing?** Both halves. An arbiter with no forbidden actions can silently ove
 one component whose numbers you trust.
 
 No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+what it may read, what it emits, and when it refuses.
 
 ---
 
 
-**1. Predict, in writing.** In `experiments/10-fusion-comparison.md`, before you build: rank
+**1. Predict, in writing.** In `experiments/11-fusion-comparison.md`, before you build: rank
 your five strategies by expected accuracy and by expected calibration. Say where you expect
 the LLM arbiter to land on each.
 
@@ -30,13 +30,16 @@ and say why you picked it.
 **3. Build five strategies.** At minimum: the most confident wins, a mean, a threshold rule,
 one that escalates only on disagreement, and one that hands everything to a language model.
 
-**4. Compare them.** Same cases, same metrics, accuracy and ECE together. Write all five rows
-to `artifacts/results/fusion.json`.
+**4. Compare aligned runs only.** Freeze a case list and record its identifier or hash. Every
+strategy in a ranking must use every one of those cases, the same labels, and the same metric
+implementation; report accuracy and ECE together in `artifacts/results/fusion.json`. Mark a
+strategy that times out, exceeds its budget, or cannot run as `incomplete`. Do not rank it
+against completed strategies or infer its position from a partial run.
 
 **5. Print the prompt.** Before you believe any arbiter result, print the fully rendered
 prompt the model actually received and read it. Every character. Paste it into your ledger.
 
-**6. Write the arbiter rules.** In `decisions/10-arbiter-rules.md`: what the arbiter is
+**6. Write the arbiter rules.** In `decisions/11-arbiter-rules.md`: what the arbiter is
 allowed to see, what it is allowed to output, and what it is forbidden from doing. Three
 rules minimum, each tied to a failure it prevents.
 

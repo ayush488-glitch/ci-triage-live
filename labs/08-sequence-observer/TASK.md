@@ -14,7 +14,7 @@ answer is "the same information in a different shape", you have designed a reimp
 and this phase is going to prove it numerically.
 
 No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+what it may read, what it emits, and when it refuses.
 
 ---
 

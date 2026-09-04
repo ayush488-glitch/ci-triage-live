@@ -24,13 +24,13 @@ are uninterpretable.
 
 ## What you will produce
 
-`ci_triage/contracts.py`, `tests/test_contracts.py`, `decisions/09-independence.md`,
-`docs/architecture.md`, an `ai-ledger/` entry, `knowns/09-architecture-independence.md`,
-and `.ci-lab/interviews/09.md`.
+`ci_triage/contracts.py`, `tests/test_contracts.py`, `decisions/10-independence.md`,
+`docs/architecture.md`, an `ai-ledger/` entry, `knowns/10-architecture-independence.md`,
+and `.ci-lab/interviews/10.md`.
 
 ## Time
 
-About 60 minutes. Rubric level 5, and the second **graded interview**.
+About 60 minutes.
 
 ## Check
 

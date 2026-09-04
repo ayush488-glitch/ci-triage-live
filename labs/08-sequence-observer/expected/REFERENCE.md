@@ -49,7 +49,7 @@ phase 03: order-dependent flakiness, where a test only fails after a particular 
 runs, is not visible in a single test's own history at all. There is no reason the sequence
 should carry more than its rate.
 
-The original build **withdrew the component**. Keeping it and reporting 0.639 as a modelling
+The reference run **withdrew the component**. Keeping it and reporting 0.639 as a modelling
 result would not have been false, exactly — it would have been a number with the control
 left out.
 
@@ -76,7 +76,7 @@ The fix is not to stop calibrating. It is to **report both**, always: raw AUC, c
 AUC, and the number of distinct calibrated probabilities. A single distinct value is a
 collapsed calibrator, and it is a bug, not a result.
 
-## What your four-project run will show
+## What your three-project run will show
 
 Your absolute numbers will differ — fewer projects, fewer folds, more variance. What should
 reproduce is the *shape*: the model and the heuristic tracking each other fold for fold, and

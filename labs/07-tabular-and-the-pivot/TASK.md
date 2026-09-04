@@ -15,13 +15,13 @@ about to find out that the answer matters enormously. Design the behaviour befor
 measure it, so the measurement can contradict you.
 
 No code in this phase until this file exists. You decide what the slice is responsible for,
-what it may read, what it emits, and when it refuses. The agent implements behind that.
+what it may read, what it emits, and when it refuses.
 
 ---
 
 
 **1. Predict what calibration does.** Before you calibrate anything, write in
-`experiments/06-calibration-tradeoff.md`: what will happen to ECE, and what will happen to
+`experiments/07-calibration-tradeoff.md`: what will happen to ECE, and what will happen to
 AUC. Commit to a direction for both.
 
 **2. Build the observer.** A gradient-boosted tree over the tabular features, on your
@@ -31,7 +31,7 @@ grouped split. Report AUC, ECE, Brier, and cost-weighted risk from your phase 02
 `artifacts/results/tabular.json`. Then explain the direction of each change. If you
 predicted wrong, leave the prediction in the file and say why you were wrong.
 
-**4. Face the number.** Your grouped result is weak. In `decisions/06-the-pivot.md`, list
+**4. Face the number.** Your grouped result is weak. In `decisions/07-the-pivot.md`, list
 every honest response:
 
 - accept it and ship a weak component;
@@ -47,5 +47,6 @@ the argument for it comes from your `PROBLEM.md`, not from the metric.
 **6. Test.** At least one test that fails if the model is fitted on data that includes the
 held-out projects.
 
-**7. Graded interview.** The coach interviews you on everything from phase 00 to here and
-writes a scored verdict to `.ci-lab/interviews/06.md`. The phase does not check off without it.
+**7. Record the review.** Summarise the evidence and decision in
+`.ci-lab/interviews/07.md`: what calibration changed, what question the pivot answers, and
+which claim the new scope no longer supports.

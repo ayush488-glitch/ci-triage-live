@@ -3,6 +3,9 @@
 **Precision@k is suspiciously close to 1.0** — either the query is in the index, or the
 index is single-class. Both are real bugs and both look like success.
 
+**Cross-project evaluation has no eligible rotations** — record the class coverage and the
+reason it cannot be scored. A missing evaluation is not evidence that retrieval transfers.
+
 **Embedding is slow** — batch it, and use a small sentence model. This is not the phase to
 be clever about encoders.
 
