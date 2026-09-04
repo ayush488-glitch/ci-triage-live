@@ -2,7 +2,7 @@
 # /// script
 # requires-python = ">=3.11"
 # ///
-"""Guided-lab harness. Gates on artifacts that exist, not on claims of understanding."""
+"""Lab harness. Reports artifacts on disk, not claims of understanding."""
 import json, sys, tomllib
 from datetime import date
 from pathlib import Path
@@ -15,7 +15,7 @@ MANIFEST = ROOT / "labs" / "manifest.toml"
 def load():
     m = tomllib.loads(MANIFEST.read_text())
     s = json.loads(STATE.read_text()) if STATE.exists() else {
-        "current": m["phases"][0]["id"], "completed": [], "interviews": {}}
+        "current": m["phases"][0]["id"], "completed": []}
     return m, s
 
 
@@ -35,12 +35,8 @@ def missing(p):
     return [r for r in p["required"] if not (ROOT / r).exists()]
 
 
-def ahead(m, p):
-    return p["id"] > m["taught_through"]
-
-
 def status(m, s):
-    print(f"\n{m['title']}   taught through phase {m['taught_through']}\n")
+    print(f"\n{m['title']}\n")
     for p in m["phases"]:
         gone = missing(p)
         if p["id"] in s["completed"]:
@@ -49,8 +45,7 @@ def status(m, s):
             mark, note = "[>]", f"{len(p['required']) - len(gone)}/{len(p['required'])} artifacts"
         else:
             mark, note = "[ ]", ""
-        flag = "  (ahead of lecture)" if ahead(m, p) else ""
-        print(f" {mark} {p['id']} {p['slug']:<32} {note}{flag}")
+        print(f" {mark} {p['id']} {p['slug']:<32} {note}")
     print(f"\n {len(s['completed'])}/{len(m['phases'])} phases. Open progress.html for the full view.\n")
 
 
@@ -71,17 +66,13 @@ def check(m, s, pid):
     return True
 
 
-def nxt(m, s, force):
+def nxt(m, s):
     ids = [p["id"] for p in m["phases"]]
     todo = [i for i in ids if i not in s["completed"]]
     if not todo:
         print("\nAll phases complete. Read challenge/README.md.\n")
         return
     p = phase(m, todo[0])
-    if ahead(m, p) and not force:
-        print(f"\nPhase {p['id']} is ahead of the lecture (taught through {m['taught_through']}).")
-        print("Run with --ahead to continue anyway.\n")
-        return
     s["current"] = p["id"]
     save(s)
     show(m, s, p["id"])
@@ -89,11 +80,11 @@ def nxt(m, s, force):
 
 def show(m, s, pid):
     p = phase(m, pid)
-    print(f"\n{p['id']}  {p['title']}   (~{p['minutes']} min, rubric level {p['level']})")
+    print(f"\n{p['id']}  {p['title']}   (~{p['minutes']} min)")
     print(f"\n  {p['question']}\n")
     print(f"  Read   labs/{p['id']}-{p['slug']}/README.md")
     print(f"  Do     labs/{p['id']}-{p['slug']}/TASK.md")
-    print("\n  Artifacts that will gate this phase:")
+    print("\n  Artifacts for this phase:")
     for r in p["required"]:
         print(f"    {'x' if (ROOT / r).exists() else ' '}  {r}")
     print()
@@ -107,8 +98,7 @@ def doctor(m, s):
             ok = False
     for p in m["phases"]:
         d = ROOT / "labs" / f"{p['id']}-{p['slug']}"
-        for f in ["README.md", "TASK.md", "CHECKPOINT.md", "AGENT_PROMPTS.md",
-                  "TROUBLESHOOTING.md", "expected/REFERENCE.md"]:
+        for f in ["README.md", "TASK.md", "TROUBLESHOOTING.md", "expected/REFERENCE.md"]:
             if not (d / f).exists():
                 print(f"missing: {d.relative_to(ROOT)}/{f}")
                 ok = False
@@ -117,7 +107,7 @@ def doctor(m, s):
 
 
 ROW = """<tr class="{cls}"><td class="id">{id}</td><td><b>{title}</b><div class=q>{q}</div>
-<div class=art>{arts}</div></td><td class=lvl>L{level}</td><td class=st>{st}</td></tr>"""
+<div class=art>{arts}</div></td><td class=st>{st}</td></tr>"""
 
 
 def progress_html(m, s):
@@ -127,20 +117,16 @@ def progress_html(m, s):
         done_arts += len(p["required"]) - len(gone)
         all_arts += len(p["required"])
         st = "done" if p["id"] in s["completed"] else (
-            "current" if p["id"] == s["current"] else ("ahead" if ahead(m, p) else "todo"))
+            "current" if p["id"] == s["current"] else "todo")
         arts = "".join(
             f'<span class="a {"y" if (ROOT / r).exists() else "n"}">{r}</span>' for r in p["required"])
-        iv = s["interviews"].get(p["id"])
-        st_txt = {"done": "complete", "current": "in progress", "ahead": "ahead of lecture",
-                  "todo": "not started"}[st]
-        if iv:
-            st_txt += f" · interview {iv['level']}/6"
+        st_txt = {"done": "complete", "current": "in progress", "todo": "not started"}[st]
         rows.append(ROW.format(cls=st, id=p["id"], title=p["title"], q=p["question"],
-                               arts=arts, level=p["level"], st=st_txt))
+                               arts=arts, st=st_txt))
     pct = round(100 * done_arts / all_arts) if all_arts else 0
     (ROOT / "progress.html").write_text(HTML.format(
         title=m["title"], pct=pct, done=len(s["completed"]), total=len(m["phases"]),
-        arts=f"{done_arts}/{all_arts}", taught=m["taught_through"],
+        arts=f"{done_arts}/{all_arts}",
         rows="\n".join(rows), today=date.today().isoformat()))
     print(f"\nwrote progress.html  —  {pct}% of artifacts, {len(s['completed'])}/{len(m['phases'])} phases\n")
 
@@ -165,7 +151,7 @@ td{{padding:.85rem .9rem;border-top:1px solid var(--line);vertical-align:top}}
 tr:first-child td{{border-top:0}}
 .id{{font-variant-numeric:tabular-nums;color:var(--dim);width:2.5rem}}
 .q{{color:var(--dim);font-size:.86rem;margin-top:.15rem}}
-.lvl,.st{{white-space:nowrap;font-size:.8rem;color:var(--dim);text-align:right}}
+.st{{white-space:nowrap;font-size:.8rem;color:var(--dim);text-align:right}}
 .art{{margin-top:.5rem;display:flex;flex-wrap:wrap;gap:.3rem}}
 .a{{font:11px/1.4 ui-monospace,monospace;padding:.15rem .4rem;border-radius:4px;
 border:1px solid var(--line);color:var(--dim)}}
@@ -173,7 +159,6 @@ border:1px solid var(--line);color:var(--dim)}}
 tr.done .id,tr.done .st{{color:var(--ok)}}
 tr.current{{background:color-mix(in srgb,var(--now) 8%,transparent)}}
 tr.current .id,tr.current .st{{color:var(--now)}}
-tr.ahead{{opacity:.5}}
 footer{{color:var(--dim);font-size:.78rem;margin-top:1.5rem}}
 </style>
 <main>
@@ -184,7 +169,6 @@ footer{{color:var(--dim);font-size:.78rem;margin-top:1.5rem}}
 <div class=kpi><b>{pct}%</b><span>artifacts built</span></div>
 <div class=kpi><b>{done}/{total}</b><span>phases checked</span></div>
 <div class=kpi><b>{arts}</b><span>files</span></div>
-<div class=kpi><b>{taught}</b><span>taught through</span></div>
 </div>
 <table>{rows}</table>
 <footer>Regenerate with <code>uv run lab.py progress</code> · {today}</footer>
@@ -205,11 +189,11 @@ def main():
     elif cmd == "check":
         check(m, s, rest[0])
     elif cmd == "next":
-        nxt(m, s, "--ahead" in rest)
+        nxt(m, s)
     elif cmd == "progress":
         pass
     else:
-        sys.exit("usage: lab.py doctor|status|show NN|check NN|next [--ahead]|progress")
+        sys.exit("usage: lab.py doctor|status|show NN|check NN|next|progress")
     progress_html(m, s)
 
 

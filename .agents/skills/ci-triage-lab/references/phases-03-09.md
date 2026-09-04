@@ -48,7 +48,28 @@ with the real counts.
 The test is the point. "No leaking column reaches the feature matrix" is an invariant that
 should outlive every model they build.
 
-## 05 — the split is the experiment
+## 05 — which runs may contribute evidence
+
+Before splitting or modelling, inspect the raw Maven logs and build a run-level trust gate.
+Each project archive contains per-run archives, and `maven.log` lives inside each run
+archive. Multi-module builds can emit several test-summary lines; sum them rather than
+reading only the last module.
+
+The gate needs explicit `BUILD_FAILED`, `LOG_TRUNCATED`, `MASS_FAILURE`, `TRUSTED`, and
+`UNKNOWN` outcomes with reasons derived from the text actually observed. The learner
+chooses and defends the mass-failure threshold.
+
+Then force the cross-run objection: a test failing in nearly every run is deterministic
+under the lab's pass-and-fail definition, not random infrastructure noise. Identify those
+tests once per project using a recorded threshold and exclude them from the mass-failure
+fraction. Keep the remaining limitation explicit: a fraction gate cannot prove that a
+cluster shared one cause.
+
+Deliverables: `ci_triage/infra.py`, a reason/multi-module/deterministic-exclusion invariant
+in `tests/test_infra.py`, and `artifacts/results/infra.json` with all-run versus trusted-run
+distinct failing-test counts.
+
+## 06 — the split is the experiment
 
 The one phase where the result is genuinely shocking, so protect the surprise.
 
@@ -60,17 +81,17 @@ The gap is enormous. Grouped-by-project cross-validation lands far below a rando
 which looks superb. Same model, same data, same features. The random split is measuring
 memorised projects.
 
-The defence questions are in `interview-method.md`. The key one: both splits ran the same
+The defence questions are in `decision-dialogue.md`. The key one: both splits ran the same
 model — where did the extra performance come from?
 
 Also in this phase: the majority baseline on the real data, so the 94% number from phase 02
 stops being hypothetical.
 
 Deliverables: `ci_triage/splits.py` with a grouped splitter, a test that asserts no project
-appears in both sides of a split, `experiments/05-split-comparison.md` with the prediction
+appears in both sides of a split, `experiments/06-split-comparison.md` with the prediction
 written before the run, and `artifacts/results/baseline.json`.
 
-## 06 — the first observer, and the pivot
+## 07 — the first observer, and the pivot
 
 Gradient-boosted trees on the tabular features. Two lessons, in order.
 
@@ -84,13 +105,13 @@ are: get more data, change the features, change the question. Changing the quest
 train per-project instead of across projects, which is what the deployment actually looks
 like anyway, since each team runs its own CI. Performance improves substantially.
 
-The move worth teaching is that the pivot came from a failure being believed rather than
+The key move is that the pivot came from a failure being believed rather than
 tuned away. Ask what a less honest engineer would have done with the weak cross-project
 number.
 
-Graded interview at the end of this phase.
+Finish by connecting the result to the system decision.
 
-## 07 — did the model learn anything
+## 08 — did the model learn anything
 
 Sequence model over each test's history of pass/fail. It scores better than the tabular
 model, and the learner will want to celebrate.
@@ -105,10 +126,10 @@ There is a second trap here worth showing: a variant that reports near-perfect c
 at chance-level discrimination. Perfectly calibrated and completely useless. Tie it back to
 phase 02.
 
-Deliverable includes `experiments/07-heuristic-control.md` — the control must be written
+Deliverable includes `experiments/08-heuristic-control.md` — the control must be written
 down before the model is run, or the phase does not count.
 
-## 08 — retrieval
+## 09 — retrieval
 
 Index past failures, embed the log, look up the nearest neighbours, vote. No training.
 
@@ -121,5 +142,9 @@ produces a corpus with one class in it, and every neighbour vote agrees by const
 That bug shipped in the original build. Let them design the index contents, then ask what
 the neighbours would look like if only failures were indexed.
 
-Deliverable: `decisions/08-index-contents.md` must state what is indexed and what is
+The corpus must contain real text from both classes. If the available projects cannot
+support a real-text cross-project evaluation, record it as unscored rather than inventing
+or borrowing a number.
+
+Deliverable: `decisions/09-index-contents.md` must state what is indexed and what is
 deliberately not.

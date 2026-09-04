@@ -100,6 +100,6 @@ Another engineer can answer all of these from what you left:
 - Which command reproduces it?
 - What is the next unanswered question?
 
-You get no credit for code you cannot explain or a number you cannot reproduce.
+The submission is incomplete if you cannot explain its code or reproduce its numbers.
 
-Read [RUBRIC.md](RUBRIC.md) before you submit.
+Read [ACCEPTANCE.md](ACCEPTANCE.md) before you submit.

@@ -1,15 +1,14 @@
-# CI flakiness triage — build it from an empty folder
+# CI flakiness triage
 
-A build goes red at 02:47. One test failed. Three completely different things could have
-caused it and the report looks identical in all three. Somebody has to decide whether to
-stop the release.
+Author: Ayush Singh
 
-You are going to build the system that helps them decide. You start with almost nothing:
-this harness, and a coach.
+A build goes red at 02:47. One test failed. The change may be broken, the test may be
+unreliable, or the machine may have hiccupped — and the report looks identical in each
+case. Build the system that helps decide whether to stop the release.
 
-There is no starter code. `ci_triage/` does not exist yet. You write it.
-
----
+You begin with an empty `ci_triage/` directory. This repository supplies the evidence,
+the phase sequence, and a small standard-library harness. You make the system decisions;
+an AI coding agent can help inspect, draft, test, and simplify the implementation.
 
 ## Start
 
@@ -18,112 +17,74 @@ git clone https://github.com/ayush488-glitch/ci-triage-live.git
 cd ci-triage-live
 ```
 
-You need [uv](https://docs.astral.sh/uv/) and a coding agent (Claude Code, or any agent that
-reads `.agents/skills/`). Open the agent in this folder and paste this, unchanged:
+You need [uv](https://docs.astral.sh/uv/) and a coding agent that reads `.agents/skills/`.
+Open the agent in this directory and paste this single prompt:
 
 ```text
-Read .agents/skills/ci-triage-coach/SKILL.md and follow it. I am the learner.
-Do this setup before any coaching, and tell me the result of each step:
+Read .agents/skills/ci-triage-lab/SKILL.md and follow it.
 
-1. Check `uv --version` works. If not, stop and tell me how to install it.
-2. Put me on my own branch so I do not collide with other students:
-   `git checkout -b lab/$(git config user.name | tr ' A-Z' '-a-z')`
-   Tell me the branch name. All my work goes here; I never push to main.
-3. Check whether the ponytail skill is available. If it is not, tell me to run
-   these two lines myself and wait for me:
-     /plugin marketplace add DietrichGebert/ponytail
-     /plugin install ponytail@ponytail
-4. Run `uv run lab.py doctor`. It must say "harness ok".
-5. Run `uv run lab.py next` and open progress.html so I can see where I am.
-
-Then start coaching me from whatever phase that is.
-
-I may know nothing about machine learning. Explain before you question me, ask
-one question at a time, and wait for my answer. Do not write my design
-decisions, and do not tell me a result before I have run it.
+Run `uv --version`, `uv run lab.py doctor`, and `uv run lab.py next`; report each result.
+I own the design decisions, including what each component may read and emit, when it
+refuses, its constraints, the metric, split, threshold, and architecture. Explain an
+unfamiliar idea with the running CI incident before asking about it. Ask one question at a
+time and wait for my answer. Do not invent evidence or run an experiment before its
+hypothesis is written.
 ```
 
-That is the whole setup. No install step and no `pyproject.toml` — `lab.py` is stdlib-only.
-The coach takes it from there.
+That is all the setup. There is no install step and no `pyproject.toml`; `lab.py` uses only
+the standard library.
 
-## Saving your work
+## Work through the phases
 
-You are a collaborator on a shared repository, so everything happens on your own branch.
+```
+decide -> design -> hypothesis -> draft -> review -> patch -> test -> evidence -> record
+```
+
+Each phase focuses on one system slice: its responsibility, allowed inputs, outputs,
+refusal behavior, and invariant. Record those choices before code. Record a hypothesis
+before an experiment. Keep one AI proposal you rejected or narrowed in every phase; it
+makes the trade-off inspectable later.
 
 ```bash
-git add -A && git commit -m "phase 05"
-git push -u origin HEAD          # first push only; then just `git push`
-```
-
-Commit at the end of every phase. `progress.html` is gitignored — it regenerates from
-`lab.py` on any machine, so there is nothing to lose.
-
-## What you will have at the end
-
-A triage system with four independent observers — rules, a tabular model, a sequence model,
-and retrieval — a fusion layer, an arbiter, and an evidence record that makes every verdict
-traceable. Roughly 13 hours of work across 14 phases, then a 90-minute challenge.
-
-More importantly: a written record of every decision you made, every AI proposal you
-rejected, every hypothesis that turned out wrong, and everything you still do not know.
-That record is the actual deliverable. The code is evidence that you earned it.
-
-## How it works
-
-```
-interview -> design -> decide -> hypothesis -> build -> test -> evidence -> record
-```
-
-Each phase opens with an interview and then designs **one slice of the system** — what it
-is responsible for, what it is allowed to read, what it emits, when it refuses to answer,
-and the one constraint that must never break. Fourteen slices; by the end they are the
-whole architecture.
-
-You design the slice. The agent implements behind it. That division is not a style
-preference — what a component may read and when it must refuse are the decisions that
-every real failure in this system came from, and they are not delegable.
-
-You cannot write code until you can say what decision the code serves and what your design
-costs you. You cannot run an experiment until you have
-written down what result would make you abandon your idea. Every phase, you have to reject
-or narrow at least one thing the AI proposes — that is a gate, not a suggestion.
-
-## Commands
-
-```bash
-uv run lab.py status          # where you are
+uv run lab.py status          # current work
 uv run lab.py next            # open the next phase
-uv run lab.py show 05         # look at a phase
-uv run lab.py check 05        # gate: do the required artifacts exist
+uv run lab.py show 05         # inspect a phase
+uv run lab.py check 05        # verify its required artifacts exist
 uv run lab.py progress        # rebuild progress.html
-open progress.html            # the whole project at a glance
+open progress.html
 ```
 
-Progress is gated on files existing on disk. Saying you understood something does not
-advance anything, and neither does the coach agreeing with you.
+Progress is based on files on disk, not a claimed result.
 
-## The files you will accumulate
+## Save your work
 
-| Directory | What goes in it |
+Work on your own branch:
+
+```bash
+git checkout -b lab/my-ci-triage
+git add -A && git commit -m "phase 05"
+git push -u origin HEAD
+```
+
+## What you will build
+
+A CI-triage system with rules, tabular, sequence, and retrieval observers; a fusion layer;
+an arbiter; and an evidence record for every verdict. The project is organized across 14
+phases plus a 90-minute challenge.
+
+| Directory | Contents |
 |---|---|
-| `design/` | one designed slice per phase — written before its code |
-| `ci_triage/` | the system |
-| `tests/` | tests that fail when the logic is wrong |
-| `decisions/` | one decision per phase, with what it cost you |
-| `experiments/` | the hypothesis, written *before* the run |
-| `knowns/` | what moved from unknown to known, or to known-unknown |
-| `ai-ledger/` | what the AI proposed and what you rejected |
-| `artifacts/results/` | the real numbers |
-| `.ci-lab/interviews/` | your defence of a number, under attack |
+| `design/` | one system slice per phase, written before code |
+| `ci_triage/` | implementation |
+| `tests/` | invariants that fail when the logic is wrong |
+| `decisions/` | decisions and their costs |
+| `experiments/` | hypotheses written before runs |
+| `knowns/` | supported conclusions and remaining uncertainty |
+| `ai-ledger/` | AI proposals and your review |
+| `artifacts/results/` | command-produced results |
 
 ## Data
 
-FlakeFlagger, Zenodo record 4450723, CC-BY-4.0. You download it yourself in phase 04, after
-you have checked the licence. There is another dataset that would be convenient and has no
-licence at all; finding that out is part of the phase.
-
-## If you are running this in class
-
-`labs/manifest.toml` has a `taught_through` line. Phases past it are marked *ahead of
-lecture* and `lab.py next` will not open them without `--ahead`. Move the line after each
-session; nothing else needs to change.
+In phase 04, you download FlakeFlagger from Zenodo record 4450723 after checking its
+CC-BY-4.0 licence. A convenient alternative has no licence; whether it may be used is part
+of the work.

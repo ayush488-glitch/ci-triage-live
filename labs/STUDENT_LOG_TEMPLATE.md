@@ -1,8 +1,6 @@
 # Phase NN — <title>
 
 **Date:**
-**Rubric level for this phase:**
-
 ## The question
 
 <the phase question, in your own words>

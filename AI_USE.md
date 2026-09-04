@@ -1,6 +1,7 @@
-# AI use policy
+# Working with AI
 
-You are expected to use an AI coding agent throughout. The lab is about using one well.
+Use an AI coding agent throughout this project. Keep its work inspectable and your
+decisions explicit.
 
 ## What that means here
 
@@ -21,7 +22,7 @@ that are actually yours.
 agent that describes what a result would probably look like has produced nothing. Ask for
 the command, run it, read the output.
 
-**Fluency is not correctness.** The most dangerous failure in this lab is a confident,
+**Fluency is not correctness.** The most dangerous failure here is a confident,
 well-written, wrong explanation. It happens most often around leakage, calibration, and
 anything involving a rare class.
 
@@ -51,8 +52,8 @@ Every phase, in `ai-ledger/NN-<slug>.md`:
 
 Writing "no suggestion was rejected" is allowed exactly once, in phase 00.
 
-## What honest looks like
+## Keep the record honest
 
 Recording a hypothesis that turned out wrong, and keeping it, is worth more than a clean
 document where every prediction happened to be right. If you edited a prediction after
-seeing the result, say so. Nobody is grading you on being right the first time.
+seeing the result, say so. A wrong prediction retained in the record is useful evidence.

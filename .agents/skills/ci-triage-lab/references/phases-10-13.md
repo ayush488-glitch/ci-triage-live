@@ -1,6 +1,6 @@
 # Phases 10–13 — the system phases
 
-## 09 — why no observer may read another
+## 10 — why no observer may read another
 
 Starts with a counting problem, not an architecture diagram. One build produced nearly two
 hundred failures. The question "is this test flaky" and the question "should we stop this
@@ -25,14 +25,14 @@ Deliverable: `ci_triage/contracts.py` — the evidence record every observer wri
 test that fails if an observer's output is missing its calibration flag, and
 `docs/architecture.md`.
 
-Graded interview at the end of this phase. The independence argument is the thing to grade.
+Finish by connecting the independence argument to the system decision.
 
-## 10 — fusion and the arbiter
+## 11 — fusion and the arbiter
 
 Five ways to combine the observers, compared as an experiment rather than chosen by taste.
-The cheap strategies do well. The one that hands everything to a language model and asks it
-to decide does very badly — worse than the majority baseline on accuracy *and* far worse on
-calibration. Calibrating it helps and still leaves it last.
+Freeze one case list first. A strategy is rankable only when it finishes every frozen case
+with the same labels and metrics. Timeouts and partial LLM runs are recorded as incomplete,
+not extrapolated into a five-way ranking.
 
 Three traps from the original build, all worth reproducing:
 
@@ -49,7 +49,7 @@ Three traps from the original build, all worth reproducing:
 
 The escalation rule and the disagreement threshold come after the comparison, not before.
 
-## 11 — the fine-tune and the ledger (ahead of the lecture)
+## 12 — the fine-tune and the ledger
 
 Two halves.
 
@@ -60,18 +60,22 @@ gradients and optimiser state, recomputation trades compute for activations. The
 does the arithmetic themselves. It is the difference between choosing LoRA and repeating
 that LoRA is good.
 
-**The result.** The fine-tune loses. It comes in below the majority baseline on the same
-split, while a TF-IDF classifier that costs nothing scores far higher. The learner must
-write the prediction and the abandonment condition *before* spending anything — that is the
-whole point of `experiments/11-finetune-vs-tfidf.md`.
+**The gate.** Price distillation first, including one fully rendered real prompt. On one
+frozen split, run the corpus-majority baseline and TF-IDF before provisioning a GPU. The
+learner must write the prediction, go condition and abandonment condition before spending
+anything — that is the whole point of `experiments/12-finetune-vs-tfidf.md`.
+
+If the gate does not justify a GPU, stopping is the result: record both baselines and the
+no-fine-tune decision in `artifacts/results/slm.json`. Fine-tune only after a written go
+decision, then compare all three results on the same frozen split.
 
 If there is no GPU budget, `precomputed/` has the runs. Using them is fine; fabricating a
 number is not. The hypothesis must still be written first, and the ledger arithmetic done
 by hand.
 
-## 12 — self-deception, prior work, and the handoff
+## 13 — self-deception, prior work, and the handoff
 
-The exit phase. Level 6.
+The exit phase.
 
 **Write the failure register before the failures.** Four families: the system lying about
 its performance, the calibrator collapsing, infrastructure contaminating the result, and
@@ -91,5 +95,5 @@ test that fails when one appears is a guarantee.
 **KNOWNS.md.** Assemble the per-phase knowns files into one table. The known-unknowns
 column is the most valuable part of the handoff and should be the longest.
 
-Then the exit interview: can another engineer take this system, reproduce the evidence, and
+Then the handoff question: can another engineer take this system, reproduce the evidence, and
 continue. If the answer is no, name what is missing rather than passing them.

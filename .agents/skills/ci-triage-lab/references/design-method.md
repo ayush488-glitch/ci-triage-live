@@ -1,7 +1,7 @@
 # Design method
 
 Every phase designs one slice of the system. Fourteen slices, and by phase 13 they are the
-whole architecture. The student designs the slice; the agent implements behind it.
+whole architecture. The builder designs the slice; the agent implements behind it.
 
 ## Why the design comes first, every time
 
@@ -28,9 +28,9 @@ This is the point of the whole lab, and it should be visible in every phase.
 | what it costs and what that buys | making it fast |
 | when it should refuse to answer | making it readable |
 
-The left column is not delegable. When a learner asks the agent to decide something in the
-left column, that is the moment to stop and interview instead. When the agent volunteers a
-decision from the left column, that is the phase's plant, and the learner should catch it.
+The left column is not delegable. When a builder asks the agent to decide something in the
+left column, pause for a decision dialogue instead. When the agent volunteers a decision
+from the left column, make the builder inspect and reject or narrow it.
 
 ## What a slice document contains
 
@@ -67,24 +67,24 @@ yet or something was skipped.
 
 ## The running architecture
 
-`docs/architecture.md` is written in phase 09 and updated in 12. It is assembled from the
+`docs/architecture.md` is written in phase 10 and updated during the final handoff. It is assembled from the
 slice documents; it is not a separate design effort. If a slice contradicts the assembled
 picture, the contradiction is the finding — record it rather than quietly editing the older
 slice.
 
 ## What forces real thinking
 
-Three questions, per slice, in the interview. They are hard to answer without designing:
+Three questions per slice are hard to answer without designing:
 
 1. **"What is this slice not allowed to know?"** — Forces the boundary. Most students
    design what a component does; almost nobody designs what it is forbidden to see. This is
-   the question that produces the independence rule in phase 09 four phases early.
+   the question that produces the independence rule in phase 10 several phases early.
 2. **"What does it do when it cannot answer?"** — Forces the refusal path. A slice with no
    refusal path pushes its uncertainty silently downstream, where it turns into confidence.
 3. **"Which earlier slice breaks if you change this one?"** — Forces the coupling to be
    visible while it is still cheap to change.
 
-If a learner answers all three, they have designed the slice. If they cannot answer the
+If a builder answers all three, they have designed the slice. If they cannot answer the
 first, they have described an implementation.
 
 ## Do not accept a diagram as a design
